@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./scss/theme.scss";
+@import "./library/element.css";
 
 html,
 body {
@@ -7,6 +8,9 @@ body {
   padding: 0px;
   margin: 0px;
   background-color: #fff;
+}
+*{
+  box-sizing: border-box;
 }
 
 body {
@@ -34,4 +38,51 @@ body {
 }
 .p-3 {
   padding: 8px !important;
+}
+
+.page-grid {
+  display: grid;
+  grid-template-columns: 275px 1fr 275px;
+  height: calc(100% - 64px - 16px);
+  gap: 16px;
+  .nav {
+    height: 100%;
+    background-color: #eee;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    position: relative;
+  }
+
+  .sug {
+    height: 100%;
+    background-color: #eee;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .console {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: #eee;
+    width: 100%;
+    height: calc(100% - 750px - 16px);
+  }
+  @media screen and (max-width: 1200px) {
+    grid-template-columns: 200px 1fr 200px;
+  }
+}
+
+#box-cont {
+  width: 100%;
+  height: 100%;
+  max-height: 750px;
+  // max-width: 1024px;
+  background-color: #eee;
+  position: relative;
+  overflow: auto;
 }

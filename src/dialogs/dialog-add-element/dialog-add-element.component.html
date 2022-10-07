@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>Create New Element</h2>
+<mat-dialog-content
+  *ngIf="this.formElement"
+  fxLayout="column"
+  fxLayoutAlign="start stretchs"
+  style="gap: 1rem"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Element's name</mat-label>
+    <input
+      matInput
+      required
+      placeholder="Select the name"
+      [formControl]="this.formElement.get('name')"
+    />
+    <mat-error *ngIf="this.formElement.get('name').hasError('required')"
+      >Invalid</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Fill color</mat-label>
+    <input
+      type="color"
+      matInput
+      placeholder="Select the fill color"
+      [formControl]="this.formElement.get('fill')"
+    />
+    <mat-error *ngIf="this.formElement.get('fill').hasError('required')"
+      >Invalid</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Font color</mat-label>
+    <input
+      type="color"
+      matInput
+      placeholder="Select the font color"
+      [formControl]="this.formElement.get('color')"
+    />
+    <mat-error *ngIf="this.formElement.get('color').hasError('required')"
+      >Invalid</mat-error
+    >
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Unique Label </mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Select the Unique Label "
+      [formControl]="this.formElement.get('type')"
+      (input)="onChangeType($event)"
+    />
+    <mat-error *ngIf="this.formElement.get('type').hasError('required')"
+      >Invalid</mat-error
+    >
+    <mat-error *ngIf="this.formElement.get('type').hasError('uniqueLabel')"
+      >This field should be unique</mat-error
+    >
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="end center">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [disabled]="this.formElement.invalid" (click)="onSave()">
+    Save
+  </button>
+</mat-dialog-actions>
