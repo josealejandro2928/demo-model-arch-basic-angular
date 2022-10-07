@@ -1,0 +1,40 @@
+<div class="bg-gray">
+  <div
+    class="container"
+    style="height: 100vh; background-color: #fff; padding: 0px"
+  >
+    <div class="home-grid">
+      <div>
+        <img
+          src="../../assets/images/img-1.png"
+          alt="home"
+          style="height: 100%; width: 100%; object-fit: cover"
+        />
+      </div>
+      <div>
+        <div
+          class="h-100"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="gappx"
+          style="padding: 24px"
+        >
+          <h2 class="mat-display-2">Welcome to the Design</h2>
+          <div
+            class="w-100"
+            fxLayout="column"
+            fxLayoutAlign="start stretch"
+            style="gap: 1rem"
+          >
+            <button (click)="onNavigateCreate()" mat-stroked-button color="primary" class="p-3">
+              CREARTE REFERENCE ARCHITECTURE
+            </button>
+            <button mat-stroked-button color="accent" class="p-3">
+              CREARTE SOFTWARE ARCHITECTURE
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
