@@ -5,7 +5,10 @@
   ></app-toolbar>
   <div class="page-grid">
     <nav class="nav">
-      <app-modeler (addNewEleement)="onAddNewElement()"></app-modeler>
+      <app-modeler [_selectionElements]="this.selectionElements"
+      (addNewElement)="onAddNewElement()"
+      (deleteElements)="onDeleteElements()"
+      (connectTwoElements)="onConnectTwoElements($event)"></app-modeler>
     </nav>
     <section class="content">
       <div #rootDesign id="box-cont">

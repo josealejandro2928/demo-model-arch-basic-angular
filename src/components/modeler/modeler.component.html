@@ -1,11 +1,31 @@
 <h2 class="mat-h2">Components</h2>
 <div fxLayout="column" fxLayoutAlign="start stretch">
   <button
-    (click)="this.addNewEleement.next($event)"
+    (click)="this.addNewElement.next($event)"
     mat-raised-button
     color="primary"
   >
     <mat-icon>add</mat-icon>
     New Element
+  </button>
+  <br />
+  <button
+    (click)="onConnect()"
+    mat-raised-button
+    [disabled]="this.selectionElements.size!=2"
+    color="accent"
+  >
+    <mat-icon>link</mat-icon>
+    Conn. Elements
+  </button>
+  <br />
+  <button
+    (click)="this.deleteElements.next($event)"
+    mat-raised-button
+    [disabled]="!this.selectionElements.size"
+    color="warn"
+  >
+    <mat-icon>delete</mat-icon>
+    Del Elements
   </button>
 </div>

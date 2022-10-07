@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Box } from 'src/library/element';
+import { Box, Line } from 'src/library/element';
 import {
   DialogAddElementComponent,
   FormCreateRAElemet,
 } from '../../dialogs/dialog-add-element/dialog-add-element.component';
-import { ElementComponent } from '../../models/app.model';
+import { ConnectionComponent, ElementComponent } from '../../models/app.model';
 
 @Component({
   selector: 'app-create-ra-arch',
@@ -15,6 +15,12 @@ import { ElementComponent } from '../../models/app.model';
 export class CreateRaArchComponent implements OnInit {
   designName = 'Example';
   allElements: Array<ElementComponent> = [];
+  allConnections: Array<ConnectionComponent> = [];
+  selectionElements: Set<ElementComponent> = new Set<ElementComponent>();
+  selectionConnections: Set<ConnectionComponent> =
+    new Set<ConnectionComponent>();
+  posX = 10;
+  posY = 10;
 
   @ViewChild('rootDesign', { static: false }) rootDesign: any;
 
@@ -56,7 +62,7 @@ export class CreateRaArchComponent implements OnInit {
         selectionChange: this.onSelectionElChange,
       }
     );
-    box.setRectData(10, 10, 100, 100, false);
+    box.setRectData((this.posX += 10), (this.posY += 10), 100, 100, false);
     let newElement: ElementComponent = {
       id: box.id,
       name: data.name,
@@ -65,6 +71,7 @@ export class CreateRaArchComponent implements OnInit {
       connections: [],
       parentInstantiationEl: null,
       isRa: true,
+      valid: true,
     };
     this.allElements.push(newElement);
   }
@@ -79,19 +86,68 @@ export class CreateRaArchComponent implements OnInit {
   };
 
   onMoveChanged = (block: Box) => {
-    // Line.updateConnectionsPositions(allConnections);
+    Line.updateConnectionsPositions(
+      this.allConnections.map((c) => c.uxElement)
+    );
   };
 
   onSelectionElChange = (block: Box) => {
-    // let selectionElements: Set<ElementComponent> = selectionElementsRef.current;
-    // let elementComponent: ElementComponent | undefined =
-    //   allElementsRef.current.find((e) => e.id === block.id);
-    // if (!elementComponent) return;
-    // if (selectionElements.has(elementComponent)) {
-    //   selectionElements.delete(elementComponent);
-    // } else {
-    //   selectionElements.add(elementComponent);
-    // }
-    // selectionElementsRef.current = new Set(selectionElements);
+    let elementComponent: ElementComponent | undefined = this.allElements.find(
+      (e) => e.id === block.id
+    );
+    if (!elementComponent) return;
+    if (this.selectionElements.has(elementComponent)) {
+      this.selectionElements.delete(elementComponent);
+    } else {
+      this.selectionElements.add(elementComponent);
+    }
   };
+
+  onSelectionConnectionChange = (line: Line) => {
+    let connectionComponent: ConnectionComponent | undefined =
+      this.allConnections.find((e) => e.id === line.id);
+    if (!connectionComponent) return;
+
+    if (this.selectionConnections.has(connectionComponent)) {
+      this.selectionConnections.delete(connectionComponent);
+    } else {
+      this.selectionConnections.add(connectionComponent);
+    }
+  };
+
+  onDeleteElements = () => {
+    for (let el of [...this.selectionElements]) {
+      el.uxElement.delete();
+    }
+    this.allElements = this.allElements.filter(
+      (el) => !this.selectionElements.has(el)
+    );
+    this.selectionElements = new Set();
+  };
+
+  onConnectTwoElements(data: {
+    block1: ElementComponent;
+    block2: ElementComponent;
+  }) {
+    const { block1, block2 } = data;
+    let line = Box.connectTwoBloks(block1.uxElement, block2.uxElement);
+    line.setEvent('selectionChange', this.onSelectionConnectionChange);
+    let newConnection: ConnectionComponent = {
+      id: line.id,
+      name: line.options.name,
+      type: 'connection',
+      uxElement: line,
+      block1: block1,
+      block2: block2,
+      isRa: true,
+      valid: true,
+    };
+    block1.connections.push(newConnection);
+    block2.connections.push(newConnection);
+    this.allConnections.push(newConnection);
+    block1.uxElement.toogleSelected();
+    block2.uxElement.toogleSelected();
+    console.log(this.allElements);
+    console.log(this.allConnections);
+  }
 }

@@ -48,7 +48,9 @@ class Box {
 
   createUniqueId() {
     if (this.options.id) return this.options.id;
-    return Math.floor(Date.now() + Math.random() * 10000000).toString(16);
+    return Math.floor(Date.now() + Math.random() * 10000000)
+      .toString(16)
+      .substring(4);
   }
 
   setId(uuid: string) {
@@ -324,7 +326,7 @@ class Line {
     y2 = 5,
     options = {},
     events = {
-      selectionChange: () => {},
+      selectionChange: (line: Line) => {},
     },
     meta = null
   ) {
@@ -355,7 +357,9 @@ class Line {
 
   createUniqueId() {
     if (this.options.id) return this.options.id;
-    return Math.floor(Date.now() + Math.random() * 10000000).toString(16);
+    return Math.floor(Date.now() + Math.random() * 10000000)
+      .toString(16)
+      .substring(4);
   }
 
   setId(uuid: string) {
@@ -474,7 +478,7 @@ class Line {
     );
     return this;
   }
-  setEvent(key: string, fn = () => {}) {
+  setEvent(key: string, fn: any = () => {}) {
     if (this.events) {
       this.events[key] = fn;
     } else {

@@ -11,9 +11,9 @@
       matInput
       required
       placeholder="Select the name"
-      [formControl]="this.formElement.get('name')"
+      [formControl]="$any(this.formElement).get('name')"
     />
-    <mat-error *ngIf="this.formElement.get('name').hasError('required')"
+    <mat-error *ngIf="$any(this.formElement).get('name').hasError('required')"
       >Invalid</mat-error
     >
   </mat-form-field>
@@ -23,9 +23,9 @@
       type="color"
       matInput
       placeholder="Select the fill color"
-      [formControl]="this.formElement.get('fill')"
+      [formControl]="$any(this.formElement).get('fill')"
     />
-    <mat-error *ngIf="this.formElement.get('fill').hasError('required')"
+    <mat-error *ngIf="$any(this.formElement).get('fill').hasError('required')"
       >Invalid</mat-error
     >
   </mat-form-field>
@@ -35,9 +35,9 @@
       type="color"
       matInput
       placeholder="Select the font color"
-      [formControl]="this.formElement.get('color')"
+      [formControl]="$any(this.formElement).get('color')"
     />
-    <mat-error *ngIf="this.formElement.get('color').hasError('required')"
+    <mat-error *ngIf="$any(this.formElement).get('color').hasError('required')"
       >Invalid</mat-error
     >
   </mat-form-field>
@@ -47,20 +47,25 @@
       type="text"
       matInput
       placeholder="Select the Unique Label "
-      [formControl]="this.formElement.get('type')"
+      [formControl]="$any(this.formElement).get('type')"
       (input)="onChangeType($event)"
     />
-    <mat-error *ngIf="this.formElement.get('type').hasError('required')"
+    <mat-error *ngIf="$any(this.formElement).get('type').hasError('required')"
       >Invalid</mat-error
     >
-    <mat-error *ngIf="this.formElement.get('type').hasError('uniqueLabel')"
+    <mat-error
+      *ngIf="$any(this.formElement).get('type').hasError('uniqueLabel')"
       >This field should be unique</mat-error
     >
   </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions fxLayoutAlign="end center">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [disabled]="this.formElement.invalid" (click)="onSave()">
+  <button
+    mat-button
+    [disabled]="$any(this.formElement).invalid"
+    (click)="onSave()"
+  >
     Save
   </button>
 </mat-dialog-actions>

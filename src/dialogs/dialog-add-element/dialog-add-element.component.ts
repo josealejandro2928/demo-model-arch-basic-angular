@@ -23,7 +23,7 @@ export interface FormCreateRAElemet {
   styleUrls: ['./dialog-add-element.component.scss'],
 })
 export class DialogAddElementComponent implements OnInit {
-  formElement: FormGroup | any;
+  formElement: FormGroup | undefined;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public dataDialog: any,
@@ -44,6 +44,9 @@ export class DialogAddElementComponent implements OnInit {
         ],
       });
     }
+    this.formElement?.get('name')?.valueChanges.subscribe((value) => {
+      this.formElement?.get('type')?.setValue(this.formatType(value));
+    });
   }
 
   formatType(str: string | null) {
@@ -56,7 +59,7 @@ export class DialogAddElementComponent implements OnInit {
   }
 
   onChangeType(e: any) {
-    this.formElement.get('type').setValue(this.formatType(e.target.value));
+    this.formElement?.get('type')?.setValue(this.formatType(e.target.value));
   }
 
   uniqueTypeElementValidator(): ValidatorFn {
