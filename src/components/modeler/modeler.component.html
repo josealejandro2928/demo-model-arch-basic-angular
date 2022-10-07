@@ -12,7 +12,7 @@
   <button
     (click)="onConnect()"
     mat-raised-button
-    [disabled]="this.selectionElements.size!=2"
+    [disabled]="this.selectionElements.size != 2"
     color="accent"
   >
     <mat-icon>link</mat-icon>
@@ -27,5 +27,20 @@
   >
     <mat-icon>delete</mat-icon>
     Del Elements
+  </button>
+  <br />
+  <h2 class="mat-h2">Components</h2>
+  <button
+    (click)="onDeleteConnections()"
+    mat-raised-button
+    [disabled]="!this.selectionConnections.size"
+    color="warn"
+  >
+    <mat-icon>delete</mat-icon>
+    Del Elements
+  </button>
+  <button (click)="this.saveDesign.next(true)" class="save" mat-raised-button>
+    <mat-icon>save</mat-icon>
+    save design
   </button>
 </div>

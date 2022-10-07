@@ -1,3 +1,10 @@
-button{
+button {
   text-transform: uppercase;
+}
+.save {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) !important;
+  width: 80%;
 }

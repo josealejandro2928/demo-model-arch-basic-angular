@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { AppStateService } from 'src/app-state.service';
 import { Box, Line } from 'src/library/element';
 import {
   DialogAddElementComponent,
@@ -12,7 +13,7 @@ import { ConnectionComponent, ElementComponent } from '../../models/app.model';
   templateUrl: './create-ra-arch.component.html',
   styleUrls: ['./create-ra-arch.component.scss'],
 })
-export class CreateRaArchComponent implements OnInit {
+export class CreateRaArchComponent implements OnInit, OnDestroy {
   designName = 'Example';
   allElements: Array<ElementComponent> = [];
   allConnections: Array<ConnectionComponent> = [];
@@ -24,9 +25,23 @@ export class CreateRaArchComponent implements OnInit {
 
   @ViewChild('rootDesign', { static: false }) rootDesign: any;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private appStateService: AppStateService
+  ) {}
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.appStateService.saveCurrentDesign({
+      name: this.designName,
+      id: this.appStateService.createUniqueId(),
+      connections: this.allConnections,
+      elements: this.allElements,
+      valid: false,
+    });
+  }
+
   onNameChanged(name: string) {
     this.designName = name;
   }
@@ -118,12 +133,25 @@ export class CreateRaArchComponent implements OnInit {
   onDeleteElements = () => {
     for (let el of [...this.selectionElements]) {
       el.uxElement.delete();
+      this.onDeleteConnections(el.connections);
     }
     this.allElements = this.allElements.filter(
       (el) => !this.selectionElements.has(el)
     );
     this.selectionElements = new Set();
   };
+
+  onDeleteConnections(listConnections: Array<ConnectionComponent>) {
+    for (let co of listConnections) {
+      co.uxElement.delete();
+      co.block1.connections = co.block1.connections.filter((cx) => cx != co);
+      co.block2.connections = co.block2.connections.filter((cx) => cx != co);
+    }
+    this.allConnections = this.allConnections.filter(
+      (el) => !listConnections.includes(el)
+    );
+    this.selectionConnections = new Set();
+  }
 
   onConnectTwoElements(data: {
     block1: ElementComponent;
@@ -147,7 +175,15 @@ export class CreateRaArchComponent implements OnInit {
     this.allConnections.push(newConnection);
     block1.uxElement.toogleSelected();
     block2.uxElement.toogleSelected();
-    console.log(this.allElements);
-    console.log(this.allConnections);
+  }
+
+  onSaveDesign() {
+    this.appStateService.saveCurrentDesign({
+      name: this.designName,
+      id: this.appStateService.createUniqueId(),
+      connections: this.allConnections,
+      elements: this.allElements,
+      valid: false,
+    });
   }
 }

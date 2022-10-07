@@ -6,9 +6,13 @@
   <div class="page-grid">
     <nav class="nav">
       <app-modeler [_selectionElements]="this.selectionElements"
+      [_selectionConnections]="this.selectionConnections"
       (addNewElement)="onAddNewElement()"
       (deleteElements)="onDeleteElements()"
-      (connectTwoElements)="onConnectTwoElements($event)"></app-modeler>
+      (connectTwoElements)="onConnectTwoElements($event)"
+      (deleteConnections)="onDeleteConnections($event)"
+      (saveDesign)="onSaveDesign()"
+      ></app-modeler>
     </nav>
     <section class="content">
       <div #rootDesign id="box-cont">

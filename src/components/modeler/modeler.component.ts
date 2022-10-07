@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ElementComponent } from '../../models/app.model';
+import { ConnectionComponent, ElementComponent } from '../../models/app.model';
 
 @Component({
   selector: 'app-modeler',
@@ -8,12 +8,20 @@ import { ElementComponent } from '../../models/app.model';
 })
 export class ModelerComponent implements OnInit {
   selectionElements: Set<ElementComponent> = new Set();
+  selectionConnections: Set<ConnectionComponent> = new Set();
+
   @Input() set _selectionElements(selection: Set<ElementComponent>) {
     this.selectionElements = selection;
   }
 
+  @Input() set _selectionConnections(selection: Set<ConnectionComponent>) {
+    this.selectionConnections = selection;
+  }
+
   @Output() addNewElement = new EventEmitter();
   @Output() deleteElements = new EventEmitter();
+  @Output() deleteConnections = new EventEmitter();
+  @Output() saveDesign = new EventEmitter();
   @Output() connectTwoElements = new EventEmitter<{
     block1: ElementComponent;
     block2: ElementComponent;
@@ -26,5 +34,9 @@ export class ModelerComponent implements OnInit {
   onConnect() {
     const [block1, block2] = [...this.selectionElements];
     this.connectTwoElements.next({ block1, block2 });
+  }
+
+  onDeleteConnections() {
+    this.deleteConnections.next([...this.selectionConnections]);
   }
 }

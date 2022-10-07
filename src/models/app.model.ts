@@ -21,3 +21,11 @@ export interface ConnectionComponent {
   isRa: boolean;
   valid: boolean;
 }
+
+export interface RADesign {
+  name: string;
+  id: string;
+  elements: Array<ElementComponent>;
+  connections: Array<ConnectionComponent>;
+  valid: boolean;
+}
