@@ -1,14 +1,20 @@
 import interact from 'interactjs';
 
+export interface IBoxOptions {
+  name?: string;
+  stroke?: string;
+  color?: string;
+  fontColor?: string;
+  renderEL?: string;
+  id?: string;
+}
 class Box {
   id: string = '';
   rootEl: any = null;
-  options: any = {};
+  options: IBoxOptions = {};
   connections: any[] = [];
   boxEl: any = null;
   labelEL: any = null;
-  contextMenu: any = null;
-  backDrop: any = null;
   events: any = {};
   posX: number;
   posY: number;
@@ -17,11 +23,12 @@ class Box {
   textEl: any = null;
   constructor(
     rootEl: any,
-    options: any,
+    options: IBoxOptions,
     events = {
       nameChange: (box: Box) => {},
       moveChange: (box: Box) => {},
       selectionChange: (box: Box, status: boolean) => {},
+      contextMenu: (box: Box) => {},
     },
     meta = null
   ) {
@@ -33,8 +40,6 @@ class Box {
     this.connections = [];
     this.boxEl = null;
     this.labelEL = null;
-    this.contextMenu = null;
-    this.backDrop = null;
     this.id = this.createUniqueId();
     this.render();
     this.listeners();
@@ -77,12 +82,12 @@ class Box {
     bodyEl.className = 'body';
     let labelEL = document.createElement('div');
     labelEL.className = 'shape-box-label';
-    labelEL.textContent = this.options.name;
+    labelEL.textContent = this.options.name as any;
     bodyEl.appendChild(labelEL);
     boxEl.appendChild(bodyEl);
     if (this.options?.renderEL) {
       let span = document.createElement('span');
-      span.className = 'material-icons';
+      span.className = 'material-symbols-outlined box-icon';
       span.innerHTML = this.options.renderEL;
       bodyEl.appendChild(span);
     }
@@ -97,10 +102,6 @@ class Box {
     this.rootEl.appendChild(boxEl);
     this.boxEl = boxEl;
     this.labelEL = labelEL;
-    this.backDrop = document.querySelector('#box-cont #backdrop');
-    this.contextMenu = document.querySelector(
-      '#box-cont #backdrop #context-menu'
-    );
   }
 
   listeners() {
@@ -124,10 +125,9 @@ class Box {
 
     this.labelEL.addEventListener('input', this.inputNameHandler);
     this.boxEl.addEventListener('contextmenu', this.contextMenuHandler);
-    this.backDrop.addEventListener('click', this.clickBackdrop);
-    this.contextMenu.addEventListener('click', this.clickContextMenuHandler);
     this.boxEl.addEventListener('dblclick', this.doubleClickHandler);
     this.labelEL.addEventListener('click', (e: any) => e.stopPropagation());
+    this.boxEl.addEventListener('click', (e: any) => e.stopPropagation());
   }
 
   ////////////////////////EVENT LISTENER HANDLERS ///////////////////////////////////////
@@ -139,19 +139,6 @@ class Box {
     }
   };
 
-  clickBackdrop = (e: any) => {
-    this.backDrop.style.display = 'none';
-    if (this.selected === true) {
-      this.setColor(this.contextMenu.querySelector('input#color').value);
-      this.setColor(
-        null,
-        null,
-        this.contextMenu.querySelector('input#font-color').value
-      );
-      this.setIcon(this.contextMenu.querySelector('#select-icon').value);
-      this.toogleSelected();
-    }
-  };
   doubleClickHandler = (e: any) => {
     e.stopPropagation();
     this.toogleSelected();
@@ -159,21 +146,11 @@ class Box {
 
   contextMenuHandler = (e: any) => {
     e.preventDefault();
-    this.backDrop.style.display = 'block';
-    const { x, width, y, height } = this.getState();
-    const { x: parentX, y: parentY } = this.rootEl.getBoundingClientRect();
-    let posX = x - parentX + width / 2;
-    let posY = y - parentY + height / 2;
-
-    this.contextMenu.style.top = `${posY}px`;
-    this.contextMenu.style.left = `${posX}px`;
-    this.contextMenu.querySelector('input#color').value = this.options.color;
-    this.contextMenu.querySelector('input#font-color').value =
-      this.options.fontColor;
-    this.contextMenu.querySelector('#select-icon').value =
-      this.options.renderEL;
-    this.toogleSelected();
-    // this.contextMenu.style.transform = `translate(${x-(width/2)}px, ${y-height/2}px)`
+    e.stopPropagation();
+    // this.toogleSelected();
+    if ('contextMenu' in this.events) {
+      this.events.contextMenu(this);
+    }
   };
 
   clickContextMenuHandler = (e: any) => {
@@ -191,6 +168,12 @@ class Box {
       this.boxEl.style.border = '4px solid #66bb6a';
       this.events.selectionChange(this, true);
     }
+  }
+
+  unSelect(withEvent = false) {
+    this.selected = false;
+    this.boxEl.style.border = `2px solid ${this.options.stroke}`;
+    if (withEvent) this.events.selectionChange(this, false);
   }
 
   getState() {
@@ -244,26 +227,27 @@ class Box {
     if (stroke) {
       this.options.stroke = stroke;
       this.boxEl.style.borderColor = stroke;
-      this.labelEL.style.borderColor = stroke;
     }
     if (fontColor) {
       this.options.fontColor = fontColor;
       this.boxEl.style.color = fontColor;
       this.labelEL.style.color = fontColor;
+      this.labelEL.style.borderColor = fontColor;
     }
     return this;
   }
   setIcon(icon: any) {
     this.options.renderEL = icon;
-    let span = this.boxEl.querySelector('.body .material-icons');
+    let span = this.boxEl.querySelector('.body .box-icon');
     if (span) {
       span.innerHTML = icon;
     } else {
       let span = document.createElement('span');
-      span.className = 'material-icons';
-      span.innerHTML = this.options.renderEL;
+      span.className = 'material-symbols-outlined box-icon';
+      span.innerHTML = this.options.renderEL as any;
       this.boxEl.querySelector('.body').appendChild(span);
     }
+    return this;
   }
 
   getCenter(offsetToParentBox = true) {
@@ -285,8 +269,6 @@ class Box {
   delete() {
     this.labelEL.removeEventListener('input', this.inputNameHandler);
     this.boxEl.removeEventListener('contextmenu', this.contextMenuHandler);
-    this.backDrop.removeEventListener('click', this.clickBackdrop);
-    this.contextMenu.removeEventListener('click', this.clickContextMenuHandler);
     this.boxEl.removeEventListener('dblclick', this.doubleClickHandler);
     this.boxEl.remove();
   }
@@ -447,6 +429,13 @@ class Line {
       this.lineEl.setAttribute('stroke', '#66bb6a');
       this.events.selectionChange(this, true);
     }
+  }
+
+  unSelect(withEvent = false) {
+    this.selected = false;
+    this.lineEl.setAttribute('stroke-width', 3);
+    this.lineEl.setAttribute('stroke', this.options.color);
+    if (withEvent) this.events.selectionChange(this, false);
   }
 
   setColor(color = 'black') {

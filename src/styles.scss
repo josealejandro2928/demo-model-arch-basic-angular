@@ -9,7 +9,7 @@ body {
   margin: 0px;
   background-color: #fff;
 }
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -85,4 +85,13 @@ body {
   background-color: #eee;
   position: relative;
   overflow: auto;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+.mat-option-text {
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem;
 }

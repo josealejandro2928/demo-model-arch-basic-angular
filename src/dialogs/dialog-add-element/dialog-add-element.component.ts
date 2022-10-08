@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { appIcons } from 'src/utils';
 import { ElementComponent } from '../../models/app.model';
 
 export interface FormCreateRAElemet {
@@ -15,6 +16,7 @@ export interface FormCreateRAElemet {
   type: string;
   color: string;
   fill: string | null;
+  icon: string | null;
 }
 
 @Component({
@@ -24,15 +26,36 @@ export interface FormCreateRAElemet {
 })
 export class DialogAddElementComponent implements OnInit {
   formElement: FormGroup | undefined;
-
+  allIcons: { name: string; icon: string }[] = [];
+  filteredIcons: { name: string; icon: string }[] = [];
+  selectedElement: ElementComponent | undefined;
   constructor(
     @Inject(MAT_DIALOG_DATA) public dataDialog: any,
     public dialogRef: MatDialogRef<DialogAddElementComponent>,
     private fb: FormBuilder
-  ) {}
+  ) {
+    this.selectedElement = this.dataDialog?.element;
+  }
 
   ngOnInit(): void {
+    this.allIcons = appIcons;
     if (this.dataDialog?.isEdition) {
+      this.formElement = this.fb.group({
+        name: [this.selectedElement?.name, [Validators.required]],
+        fill: [
+          this.selectedElement?.uxElement?.options?.color,
+          [Validators.required],
+        ],
+        color: [
+          this.selectedElement?.uxElement?.options?.fontColor,
+          [Validators.required],
+        ],
+        type: [
+          this.selectedElement?.type,
+          [Validators.required, this.uniqueTypeElementValidator()],
+        ],
+        icon: [this.selectedElement?.uxElement?.options?.renderEL, []],
+      });
     } else {
       this.formElement = this.fb.group({
         name: ['Element', [Validators.required]],
@@ -42,10 +65,19 @@ export class DialogAddElementComponent implements OnInit {
           this.formatType('Element'),
           [Validators.required, this.uniqueTypeElementValidator()],
         ],
+        icon: [null, []],
       });
     }
-    this.formElement?.get('name')?.valueChanges.subscribe((value) => {
-      this.formElement?.get('type')?.setValue(this.formatType(value));
+    if (!this.selectedElement) {
+      this.formElement?.get('name')?.valueChanges.subscribe((value) => {
+        this.formElement?.get('type')?.setValue(this.formatType(value));
+      });
+    }
+    this.filteredIcons = this.allIcons;
+    this.formElement?.get('icon')?.valueChanges.subscribe((value) => {
+      this.filteredIcons = this.allIcons.filter((icon) =>
+        icon.name.includes((value || '').trim().toLowerCase())
+      );
     });
   }
 
@@ -71,7 +103,8 @@ export class DialogAddElementComponent implements OnInit {
       if (
         this.dataDialog.allElements.find(
           (e: ElementComponent) => e.type === this.formatType(value)
-        )
+        ) &&
+        this.formatType(value) !== this.selectedElement?.type
       ) {
         return { uniqueLabel: true };
       }

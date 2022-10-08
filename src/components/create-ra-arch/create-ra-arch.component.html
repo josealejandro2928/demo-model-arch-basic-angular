@@ -8,6 +8,7 @@
       <app-modeler [_selectionElements]="this.selectionElements"
       [_selectionConnections]="this.selectionConnections"
       (addNewElement)="onAddNewElement()"
+      (editElement)="onEditElement()"
       (deleteElements)="onDeleteElements()"
       (connectTwoElements)="onConnectTwoElements($event)"
       (deleteConnections)="onDeleteConnections($event)"
@@ -15,34 +16,8 @@
       ></app-modeler>
     </nav>
     <section class="content">
-      <div #rootDesign id="box-cont">
+      <div #rootDesign id="box-cont" (click)="onClickRootDesign($event)">
         <svg id="_svg"></svg>
-        <div id="backdrop">
-          <div id="context-menu">
-            <div class="menu-item">
-              <label> fill: </label>
-              <input type="color" name="color" id="color" />
-            </div>
-            <div class="menu-item">
-              <label> color: </label>
-              <input type="color" name="color" id="font-color" />
-            </div>
-            <div class="menu-item">
-              <label> icon: </label>
-              <select name="icon" id="select-icon">
-                <option value="">None</option>
-                <option value="account_circle">user</option>
-                <option value="computer">computer</option>
-                <option value="storage">database</option>
-                <option value="cloud">cloud</option>
-                <option value="dns">server</option>
-                <option value="devices">UI</option>
-                <option value="source">backend</option>
-              </select>
-            </div>
-            <hr />
-          </div>
-        </div>
       </div>
       <div class="console"></div>
     </section>

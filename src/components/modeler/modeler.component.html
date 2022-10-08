@@ -10,6 +10,16 @@
   </button>
   <br />
   <button
+    (click)="this.editElement.next($event)"
+    mat-raised-button
+    color="primary"
+    [disabled]="this.selectionElements.size != 1"
+  >
+    <mat-icon>edit</mat-icon>
+    Edit Element
+  </button>
+  <br />
+  <button
     (click)="onConnect()"
     mat-raised-button
     [disabled]="this.selectionElements.size != 2"

@@ -47,7 +47,6 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
   }
 
   onAddNewElement() {
-    console.log('HEllo from here');
     const dialogRef = this.dialog.open(DialogAddElementComponent, {
       maxHeight: '90vh',
       maxWidth: '100%',
@@ -63,18 +62,48 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
     });
   }
 
+  onEditElement(selectedEl?: ElementComponent | undefined) {
+    selectedEl = selectedEl ? selectedEl : [...this.selectionElements][0];
+
+    const dialogRef = this.dialog.open(DialogAddElementComponent, {
+      maxHeight: '90vh',
+      maxWidth: '100%',
+      width: '15cm',
+      data: {
+        allElements: this.allElements,
+        element: selectedEl,
+        isEdition: true,
+      },
+    });
+
+    dialogRef
+      .afterClosed()
+      .subscribe((result: FormCreateRAElemet | undefined) => {
+        if (!result) return;
+        let element: ElementComponent = selectedEl as ElementComponent;
+        element.name = result.name;
+        element.type = result.type;
+        element.uxElement
+          .setColor(result.fill, null, result.color)
+          .setIcon(result.icon)
+          .setName(result.name);
+      });
+  }
+
   createNewElement(data: FormCreateRAElemet) {
     let box = new Box(
       this.rootDesign.nativeElement,
       {
         name: data.name,
-        color: data.fill,
+        color: data.fill as string,
         fontColor: data.color,
+        renderEL: data.icon as string,
       },
       {
         moveChange: this.onMoveChanged,
         nameChange: this.onNameChage,
         selectionChange: this.onSelectionElChange,
+        contextMenu: this.onContextMenu,
       }
     );
     box.setRectData((this.posX += 10), (this.posY += 10), 100, 100, false);
@@ -91,19 +120,18 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
     this.allElements.push(newElement);
   }
 
-  onNameChage = (block: Box) => {
-    // let elementsArr = [...allElementsRef.current];
-    // let index: any = elementsArr.findIndex((el) => el.id === block.id);
-    // if (index === -1) return;
-    // let el = { ...elementsArr[index], name: block.options.name };
-    // elementsArr[index] = el;
-    // setAllElements(elementsArr);
-  };
+  onNameChage = (block: Box) => {};
 
   onMoveChanged = (block: Box) => {
     Line.updateConnectionsPositions(
       this.allConnections.map((c) => c.uxElement)
     );
+  };
+
+  onContextMenu = (block: Box) => {
+    let el = this.allElements.find((e) => e.id == block.id);
+    if (!el) return;
+    this.onEditElement(el);
   };
 
   onSelectionElChange = (block: Box) => {
@@ -185,5 +213,15 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
       elements: this.allElements,
       valid: false,
     });
+  }
+
+  onClickRootDesign(event: any) {
+    // console.log('enter here');
+    event.stopPropagation();
+    for (let el of [...this.selectionConnections, ...this.selectionElements]) {
+      el.uxElement.unSelect();
+    }
+    this.selectionConnections = new Set();
+    this.selectionElements = new Set();
   }
 }

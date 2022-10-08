@@ -17,6 +17,7 @@ import { ModelerComponent } from '../components/modeler/modeler.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { DialogAddElementComponent } from 'src/dialogs/dialog-add-element/dialog-add-element.component';
 
@@ -44,6 +45,7 @@ import { DialogAddElementComponent } from 'src/dialogs/dialog-add-element/dialog
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatAutocompleteModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

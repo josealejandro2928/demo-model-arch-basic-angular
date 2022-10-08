@@ -58,7 +58,31 @@
       >This field should be unique</mat-error
     >
   </mat-form-field>
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Select an icon</mat-label>
+    <input
+      type="text"
+      placeholder="Pick one"
+      aria-label="Number"
+      matInput
+      [formControl]="$any(this.formElement).get('icon')"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        fxLayoutAlign="start center"
+        *ngFor="let icon of filteredIcons"
+        [value]="icon.icon"
+      >
+        <!-- <mat-icon>{{ icon.icon }}</mat-icon> -->
+        <span class="material-symbols-outlined"> {{ icon.icon }} </span>
+        <span>{{ icon.name }}</span>
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 </mat-dialog-content>
+
 <mat-dialog-actions fxLayoutAlign="end center">
   <button mat-button mat-dialog-close>Cancel</button>
   <button

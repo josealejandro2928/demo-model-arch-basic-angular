@@ -22,6 +22,7 @@ export class ModelerComponent implements OnInit {
   @Output() deleteElements = new EventEmitter();
   @Output() deleteConnections = new EventEmitter();
   @Output() saveDesign = new EventEmitter();
+  @Output() editElement = new EventEmitter();
   @Output() connectTwoElements = new EventEmitter<{
     block1: ElementComponent;
     block2: ElementComponent;
