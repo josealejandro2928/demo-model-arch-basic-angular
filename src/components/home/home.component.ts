@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onNavigateCreate() {
-    this.router.navigate(['create-RA']);
+  onNavigateCreate(link: string) {
+    this.router.navigate([link]);
   }
 }

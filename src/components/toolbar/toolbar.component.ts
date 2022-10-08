@@ -10,6 +10,8 @@ export class ToolbarComponent implements OnInit {
   @Input() set _name(name: string) {
     this.name = name;
   }
+  @Input() color: 'primary' | 'accent' | 'warn' = 'primary';
+  @Input() title: string = 'Nothing';
   @Output() nameChanged = new EventEmitter();
 
   constructor() {}

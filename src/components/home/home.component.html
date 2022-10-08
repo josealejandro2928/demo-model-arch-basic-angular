@@ -26,10 +26,20 @@
             fxLayoutAlign="start stretch"
             style="gap: 1rem"
           >
-            <button (click)="onNavigateCreate()" mat-stroked-button color="primary" class="p-3">
+            <button
+              (click)="onNavigateCreate('create-ra')"
+              mat-stroked-button
+              color="primary"
+              class="p-3"
+            >
               CREARTE REFERENCE ARCHITECTURE
             </button>
-            <button mat-stroked-button color="accent" class="p-3">
+            <button
+              (click)="onNavigateCreate('create-sa')"
+              mat-stroked-button
+              color="accent"
+              class="p-3"
+            >
               CREARTE SOFTWARE ARCHITECTURE
             </button>
           </div>

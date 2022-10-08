@@ -1,0 +1,25 @@
+.item {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: relative;
+  &:hover {
+    background-color: #fafafa;
+  }
+  &.selected {
+    border: 1px solid #81d4fa;
+    background-color: #e1f5fe;
+  }
+  .desc {
+    white-space: pre-wrap;
+    opacity: 0.8;
+    font-style: italic;
+  }
+  .details {
+    position: absolute;
+    right: 16px;
+    bottom: 8px;
+    z-index: 5;
+  }
+}

@@ -1,15 +1,27 @@
-<mat-toolbar color="primary" class="toolbar">
-  <mat-toolbar-row
-    class="container"
-    fxLayout="row"
-    fxLayoutAlign="space-between center"
-  >
-    <input id="name-title" type="text" [(ngModel)]="name" (change)="onChange($event)" />
-    <span class="example-spacer"></span>
-    <img
-      src="../../assets/images/gssi_logo.png"
-      alt="gssi_logo"
-      height="48"
-      style="border-radius: 50%"
-    /> </mat-toolbar-row
+<mat-toolbar [color]="this.color" class="toolbar">
+  <mat-toolbar-row class="grid">
+    <div style="gap: 0px; padding-left: 0px">
+      <a matTooltip="Go back to Home" routerLink=".." mat-icon-button>
+        <mat-icon class="mat-18">arrow_back</mat-icon>
+      </a>
+      <span class="breadcrumb">{{ this.title }}</span>
+    </div>
+
+    <div>
+      <input
+        id="name-title"
+        type="text"
+        [(ngModel)]="name"
+        (change)="onChange($event)"
+      />
+    </div>
+
+    <div>
+      <img
+        src="../../assets/images/gssi_logo.png"
+        alt="gssi_logo"
+        height="48"
+        style="border-radius: 50%"
+      />
+    </div> </mat-toolbar-row
 ></mat-toolbar>

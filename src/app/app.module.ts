@@ -20,10 +20,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { DialogAddElementComponent } from 'src/dialogs/dialog-add-element/dialog-add-element.component';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-save-ra-design.component';
-
-
+import { CreateSaArchComponent } from 'src/components/create-sa-arch/create-sa-arch.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { SelectRaDesign } from 'src/dialogs/select-ra-design/select-ra-design.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-sav
     ToolbarComponent,
     ModelerComponent,
     DialogAddElementComponent,
-    DialogSaveRADesign
+    DialogSaveRADesign,
+    CreateSaArchComponent,
+    SelectRaDesign,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,8 @@ import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-sav
     MatInputModule,
     MatAutocompleteModule,
     MatProgressSpinnerModule,
+    MatTooltipModule,
+    MatChipsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

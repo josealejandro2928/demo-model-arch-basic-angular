@@ -1,14 +1,25 @@
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 import { RADesign } from './models/app.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AppStateService {
-  currentRADesign: RADesign | undefined;
-  allRA: any[] = [];
+  listRA: Array<RADesign> = [];
 
-  constructor() {}
+  constructor() {
+    try {
+      this.listRA = JSON.parse(localStorage.getItem('listRA') as any);
+      if (!this.listRA) {
+        localStorage.setItem('listRA', '[]');
+        this.listRA = [];
+      }
+    } catch (e) {
+      localStorage.setItem('listRA', '[]');
+    }
+    // console.log(this.listRA, '*******************');
+  }
 
   saveCurrentDesign(data: RADesign) {
     let connections = data.connections.map((co) => {
@@ -59,9 +70,37 @@ export class AppStateService {
     }
   }
 
+  setCurrentRADesign(data: RADesign) {
+    localStorage.setItem('current-ra-design', JSON.stringify(data));
+  }
+
+  getCurrentSADesign() {
+    let currentSADesign: any;
+    try {
+      currentSADesign = JSON.parse(
+        localStorage.getItem('current-sa-design') || ''
+      );
+    } finally {
+      return currentSADesign;
+    }
+  }
+
   createUniqueId() {
     return Math.floor(Date.now() + Math.random() * 10000000)
       .toString(16)
       .substring(4);
+  }
+
+  saveRA(element: RADesign) {
+    let index = this.listRA.findIndex((e) => e.id == element.id);
+    if (index > -1) {
+      this.listRA[index] = element;
+    } else {
+      this.listRA.push(element);
+    }
+    localStorage.setItem('listRA', JSON.stringify(this.listRA));
+  }
+  getAllRA(): Observable<RADesign[]> {
+    return of(this.listRA);
   }
 }

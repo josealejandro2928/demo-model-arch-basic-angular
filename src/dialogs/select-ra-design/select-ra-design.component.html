@@ -1,0 +1,43 @@
+<h2 mat-dialog-title>Select A Reference Archetecture</h2>
+<mat-dialog-content
+  fxLayout="column"
+  fxLayoutAlign="start stretchs"
+  style="gap: 1rem"
+>
+  <div
+    *ngFor="let design of this.allRA"
+    class="item"
+    (click)="onToogleSelection(design)"
+    [ngClass]="{ selected: this.selectionRADesign.has(design) }"
+  >
+    <h3>{{ design.name }}</h3>
+    <p class="desc">{{ design.description }}</p>
+
+    <p class="mat-body-2" style="margin-bottom: 4px">
+      Requirements:
+    </p>
+    <mat-chip-list style="margin-bottom: 4px">
+      <mat-chip *ngFor="let item of design.elements">{{ item.type }}</mat-chip>
+      <mat-chip>connections: {{ design.connections.length }}</mat-chip>
+    </mat-chip-list>
+    <button
+      matTooltip="See details"
+      class="details"
+      mat-mini-fab
+      (click)="seeDetails($event, design)"
+    >
+      <mat-icon>info</mat-icon>
+    </button>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="end center">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [disabled]="!this.selectionRADesign.size"
+    (click)="onSave()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>

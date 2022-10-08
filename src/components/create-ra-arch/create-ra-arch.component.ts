@@ -52,7 +52,10 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
     await delay_ms(1000);
     this.rootDesign = document.querySelector('#box-cont');
     this.currentRADesign = this.appStateService.getCurrentRADesign();
-    if (!this.currentRADesign) return;
+    if (!this.currentRADesign) {
+      this.loading = false;
+      return;
+    }
     this.initCurrentRaDesign(this.currentRADesign);
     this.loading = false;
   }
@@ -259,6 +262,8 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
     this.onDeleteElements();
     localStorage.setItem('current-ra-design', '');
     this.id = this.appStateService.createUniqueId();
+    this.designName = 'Example';
+    this.description = ""
   }
 
   initCurrentRaDesign(raDesign: RADesign) {
@@ -349,7 +354,9 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
       if (!result) return;
       this.description = result.description as string;
       this.saveDesignLocalStore();
-
+      this.appStateService.saveRA(result);
+      this.onDeleteDesign();
+      this.router.navigate(['']);
     });
   }
 }
