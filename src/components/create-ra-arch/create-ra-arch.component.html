@@ -5,20 +5,28 @@
   ></app-toolbar>
   <div class="page-grid">
     <nav class="nav">
-      <app-modeler [_selectionElements]="this.selectionElements"
-      [_selectionConnections]="this.selectionConnections"
-      (addNewElement)="onAddNewElement()"
-      (editElement)="onEditElement()"
-      (deleteElements)="onDeleteElements()"
-      (connectTwoElements)="onConnectTwoElements($event)"
-      (deleteConnections)="onDeleteConnections($event)"
-      (saveDesign)="onSaveDesign()"
+      <app-modeler
+        [_selectionElements]="this.selectionElements"
+        [_selectionConnections]="this.selectionConnections"
+        (addNewElement)="onAddNewElement()"
+        (editElement)="onEditElement()"
+        (deleteElements)="onDeleteElements()"
+        (connectTwoElements)="onConnectTwoElements($event)"
+        (deleteConnections)="onDeleteConnections($event)"
+        (deleteDesign)="onDeleteDesign()"
+        (saveDesign)="onSaveDesign()"
+        [_connections]="this.allConnections"
+        [_elements]="this.allElements"
       ></app-modeler>
     </nav>
     <section class="content">
       <div #rootDesign id="box-cont" (click)="onClickRootDesign($event)">
         <svg id="_svg"></svg>
+        <div class="loading-spiner" *ngIf="this.loading">
+          <mat-spinner></mat-spinner>
+        </div>
       </div>
+
       <div class="console"></div>
     </section>
     <nav class="sug"></nav>

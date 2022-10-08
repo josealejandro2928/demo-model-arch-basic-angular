@@ -4,7 +4,8 @@ export interface ElementComponent {
   id: string;
   name: string;
   type: string;
-  uxElement: Box;
+  uxElement?: Box;
+  uxElementState?:any;
   connections: Array<ConnectionComponent>;
   parentInstantiationEl: ElementComponent | null;
   isRa: boolean;
@@ -15,9 +16,12 @@ export interface ConnectionComponent {
   id: string;
   name: string;
   type: string;
-  uxElement: Line;
+  uxElement?: Line;
+  uxElementState?:any;
   block1: ElementComponent;
   block2: ElementComponent;
+  block1Id?:string;
+  block2Id?:string;
   isRa: boolean;
   valid: boolean;
 }
@@ -28,4 +32,5 @@ export interface RADesign {
   elements: Array<ElementComponent>;
   connections: Array<ConnectionComponent>;
   valid: boolean;
+  description?: string;
 }

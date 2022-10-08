@@ -9,6 +9,8 @@ import { ConnectionComponent, ElementComponent } from '../../models/app.model';
 export class ModelerComponent implements OnInit {
   selectionElements: Set<ElementComponent> = new Set();
   selectionConnections: Set<ConnectionComponent> = new Set();
+  allConnections: Array<ConnectionComponent> = [];
+  allElements: Array<ElementComponent> = [];
 
   @Input() set _selectionElements(selection: Set<ElementComponent>) {
     this.selectionElements = selection;
@@ -17,12 +19,19 @@ export class ModelerComponent implements OnInit {
   @Input() set _selectionConnections(selection: Set<ConnectionComponent>) {
     this.selectionConnections = selection;
   }
+  @Input() set _connections(val: Array<ConnectionComponent>) {
+    this.allConnections = val;
+  }
+  @Input() set _elements(val: Array<ElementComponent>) {
+    this.allElements = val;
+  }
 
   @Output() addNewElement = new EventEmitter();
   @Output() deleteElements = new EventEmitter();
   @Output() deleteConnections = new EventEmitter();
   @Output() saveDesign = new EventEmitter();
   @Output() editElement = new EventEmitter();
+  @Output() deleteDesign = new EventEmitter();
   @Output() connectTwoElements = new EventEmitter<{
     block1: ElementComponent;
     block2: ElementComponent;

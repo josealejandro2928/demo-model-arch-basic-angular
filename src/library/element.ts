@@ -95,6 +95,9 @@ class Box {
     boxEl.style.border = `2px solid ${this.options.stroke}`;
     boxEl.style.background = `${this.options.color}`;
     boxEl.setAttribute('id', `boxId-${this.id}`);
+    boxEl.style.color = this.options.fontColor as string;
+    labelEL.style.color = this.options.fontColor as string;
+    labelEL.style.borderColor = this.options.fontColor as string;
     this.posX = 40;
     this.posY = 40;
     boxEl.style.transform = `translate(${this.posX}px, ${this.posY}px)`;
@@ -209,6 +212,7 @@ class Box {
       this.posX -= parentX;
       this.posY -= parentY;
     }
+    // debugger
     this.boxEl.style.width = `${w}px`;
     this.boxEl.style.height = `${h}px`;
     this.boxEl.style.transform = `translate(${this.posX}px, ${this.posY}px)`;

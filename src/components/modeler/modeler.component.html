@@ -39,7 +39,7 @@
     Del Elements
   </button>
   <br />
-  <h2 class="mat-h2">Components</h2>
+  <h2 class="mat-h2">Connections</h2>
   <button
     (click)="onDeleteConnections()"
     mat-raised-button
@@ -47,9 +47,27 @@
     color="warn"
   >
     <mat-icon>delete</mat-icon>
-    Del Elements
+    Del Connections
   </button>
-  <button (click)="this.saveDesign.next(true)" class="save" mat-raised-button>
+
+  <button
+    (click)="this.deleteDesign.next(true)"
+    color="warn"
+    class="save"
+    mat-raised-button
+    style="bottom: 80px"
+    [disabled]="!this.allConnections.length && !this.allElements.length"
+  >
+    <mat-icon>delete</mat-icon>
+    delete design
+  </button>
+
+  <button
+    [disabled]="!this.allConnections.length && !this.allElements.length"
+    (click)="this.saveDesign.next(true)"
+    class="save"
+    mat-raised-button
+  >
     <mat-icon>save</mat-icon>
     save design
   </button>

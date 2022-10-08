@@ -6,6 +6,7 @@ import { RADesign } from './models/app.model';
 })
 export class AppStateService {
   currentRADesign: RADesign | undefined;
+  allRA: any[] = [];
 
   constructor() {}
 
@@ -14,7 +15,7 @@ export class AppStateService {
       let saveCo: any = {
         id: co.id,
         name: co.name,
-        uxElementState: co.uxElement.getState(),
+        uxElementState: co.uxElement?.getState(),
         block1Id: co.block1.id,
         block2Id: co.block2.id,
         type: co.type,
@@ -29,7 +30,7 @@ export class AppStateService {
         id: el.id,
         name: el.name,
         type: el.type,
-        uxElementState: el.uxElement.getState(),
+        uxElementState: el.uxElement?.getState(),
         isRa: el.isRa,
         valid: el.valid,
         connections: el.connections.map((c) => c.id),
@@ -38,14 +39,24 @@ export class AppStateService {
     });
 
     data = {
+      ...data,
       elements,
       connections,
-      name: data.name,
-      valid: data.valid,
-      id: data.id,
     };
 
     localStorage.setItem('current-ra-design', JSON.stringify(data));
+    return data;
+  }
+
+  getCurrentRADesign() {
+    let currentRADesign: any;
+    try {
+      currentRADesign = JSON.parse(
+        localStorage.getItem('current-ra-design') || ''
+      );
+    } finally {
+      return currentRADesign;
+    }
   }
 
   createUniqueId() {

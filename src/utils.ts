@@ -16,3 +16,7 @@ export const appIcons = [
   { name: 'load-balancer-2', icon: 'mediation' },
   { name: 'auth', icon: 'verified_user' },
 ];
+
+export const delay_ms = async (ms: number) => {
+  return new Promise((r) => setTimeout(r, ms || 1000));
+};

@@ -20,6 +20,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { DialogAddElementComponent } from 'src/dialogs/dialog-add-element/dialog-add-element.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-save-ra-design.component';
+
+
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { DialogAddElementComponent } from 'src/dialogs/dialog-add-element/dialog
     ToolbarComponent,
     ModelerComponent,
     DialogAddElementComponent,
+    DialogSaveRADesign
   ],
   imports: [
     BrowserModule,
@@ -46,6 +51,7 @@ import { DialogAddElementComponent } from 'src/dialogs/dialog-add-element/dialog
     MatFormFieldModule,
     MatInputModule,
     MatAutocompleteModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

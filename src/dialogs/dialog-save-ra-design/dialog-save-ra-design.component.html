@@ -1,0 +1,72 @@
+<h2 mat-dialog-title>{{ this.selectedElement.name }}</h2>
+<mat-dialog-content
+  *ngIf="this.formData"
+  fxLayout="column"
+  fxLayoutAlign="start stretchs"
+  style="gap: 1rem"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>Id</mat-label>
+    <input
+      matInput
+      placeholder="Id"
+      [value]="this.selectedElement.id"
+      readonly
+      disabled
+    />
+  </mat-form-field>
+
+  <div
+    fxLayout="row wrap"
+    fxLayoutAlign="space-between start"
+    fxLayoutGap="gappx"
+  >
+    <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="fill">
+      <mat-label># Elements</mat-label>
+      <input
+        matInput
+        placeholder="Id"
+        readonly
+        disabled
+        [value]="this.selectedElement.elements.length"
+      />
+    </mat-form-field>
+    <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="fill">
+      <mat-label># Connectors</mat-label>
+      <input
+        readonly
+        disabled
+        matInput
+        placeholder="Id"
+        [value]="this.selectedElement.connections.length"
+      />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Description </mat-label>
+    <textarea
+      rows="3"
+      style="font-style: italic"
+      type="text"
+      matInput
+      placeholder="Describe your design"
+      [formControl]="$any(this.formData).get('description')"
+    ></textarea>
+    <mat-error
+      *ngIf="$any(this.formData).get('description').hasError('required')"
+      >Invalid</mat-error
+    >
+  </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions fxLayoutAlign="end center">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [disabled]="$any(this.formData).invalid"
+    (click)="onSave()"
+  >
+    Save
+  </button>
+</mat-dialog-actions>
