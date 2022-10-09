@@ -4,5 +4,10 @@
   <ng-container *ngIf="!this.allSuggestion.length">
     <p>There is not suggestion for this design</p>
   </ng-container>
-  <ng-container *ngIf="this.allSuggestion.length"> </ng-container>
+  <ng-container *ngIf="this.allSuggestion.length">
+    <div *ngFor="let item of this.allSuggestion" class="item">
+      <div class="msg" [innerHtml]="item.message"></div>
+      <div class="action"></div>
+    </div>
+  </ng-container>
 </div>

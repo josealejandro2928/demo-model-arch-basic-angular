@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { RADesign, ConsoleItem } from './models/app.model';
+import { RADesign, ConsoleItem, SADesign } from './models/app.model';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +39,7 @@ export class AppStateService {
     // console.log(this.listRA, '*******************');
   }
 
-  saveCurrentDesign(data: RADesign) {
+  saveCurrentDesign(data: RADesign | SADesign) {
     let connections = data.connections.map((co) => {
       let saveCo: any = {
         id: co.id,
@@ -72,8 +72,12 @@ export class AppStateService {
       elements,
       connections,
     };
+    if ('parentRADesign' in data) {
+      localStorage.setItem('current-sa-design', JSON.stringify(data));
+    } else {
+      localStorage.setItem('current-ra-design', JSON.stringify(data));
+    }
 
-    localStorage.setItem('current-ra-design', JSON.stringify(data));
     return data;
   }
 

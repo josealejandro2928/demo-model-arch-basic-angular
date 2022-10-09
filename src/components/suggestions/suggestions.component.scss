@@ -7,3 +7,22 @@ hr {
   margin-block-start: 8px;
   margin-block-end: 8px;
 }
+
+.item {
+  padding: 8px;
+  border-radius: 16px;
+  margin: 4px 0px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  position: relative;
+
+  &:hover {
+    background-color: #fafafa;
+  }
+  .msg::ng-deep {
+    font-size: 13px;
+    strong {
+      font-weight: 500 !important;
+    }
+  }
+}

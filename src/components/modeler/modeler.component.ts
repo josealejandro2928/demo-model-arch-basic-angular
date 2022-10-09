@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ConnectionComponent, ElementComponent } from '../../models/app.model';
 
 @Component({
@@ -17,7 +11,7 @@ export class ModelerComponent implements OnInit {
   selectionConnections: Set<ConnectionComponent> = new Set();
   allConnections: Array<ConnectionComponent> = [];
   allElements: Array<ElementComponent> = [];
-
+  @Input() color: 'primary' | 'accent' = 'primary';
   @Input() set _selectionElements(selection: Set<ElementComponent>) {
     this.selectionElements = selection;
   }

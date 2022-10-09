@@ -4,7 +4,7 @@
   <button
     (click)="this.addNewElement.next($event)"
     mat-raised-button
-    color="primary"
+    [color]="this.color"
   >
     <mat-icon>add</mat-icon>
     New Element
@@ -13,7 +13,7 @@
   <button
     (click)="this.editElement.next($event)"
     mat-raised-button
-    color="primary"
+    [color]="this.color"
     [disabled]="this.selectionElements.size != 1"
   >
     <mat-icon>edit</mat-icon>

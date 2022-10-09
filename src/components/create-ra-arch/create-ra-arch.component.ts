@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
+import {  Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { NavigationEnd, Route, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import {  Router } from '@angular/router';
 import { AppStateService } from 'src/app-state.service';
 import { Box, Line } from 'src/library/element';
 import { delay_ms } from 'src/utils';

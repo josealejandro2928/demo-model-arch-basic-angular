@@ -7,7 +7,7 @@
   ></app-toolbar>
   <div class="page-grid">
     <nav class="nav">
-      <!-- <app-modeler
+      <app-modeler
         [_selectionElements]="this.selectionElements"
         [_selectionConnections]="this.selectionConnections"
         (addNewElement)="onAddNewElement()"
@@ -19,7 +19,8 @@
         (saveDesign)="onSaveDesign()"
         [_connections]="this.allConnections"
         [_elements]="this.allElements"
-      ></app-modeler> -->
+        color='accent'
+      ></app-modeler>
     </nav>
     <section class="content">
       <div #rootDesign id="box-cont" (click)="onClickRootDesign($event)">
@@ -29,9 +30,16 @@
         </div>
       </div>
 
-      <div class="console"></div>
+      <div class="console">
+        <app-console></app-console>
+      </div>
     </section>
-    <nav class="sug"></nav>
+    <nav class="sug">
+      <app-suggestions
+        [_raDesign]="$any(this.parentRADesign)"
+        [_saDesign]="this.getSADesign()"
+      ></app-suggestions>
+    </nav>
     <div matTooltip="Select a Reference Architecture" class="fab-btn">
       <button (click)="onSelectRA()" mat-fab color="accent">
         <mat-icon>cloud_download</mat-icon>
