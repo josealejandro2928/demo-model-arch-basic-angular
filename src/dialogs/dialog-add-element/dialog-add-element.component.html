@@ -41,7 +41,7 @@
       >Invalid</mat-error
     >
   </mat-form-field>
-  <mat-form-field appearance="fill">
+  <mat-form-field *ngIf="!this.parentRADesign" appearance="fill">
     <mat-label>Unique Label </mat-label>
     <input
       type="text"
@@ -57,6 +57,27 @@
       *ngIf="$any(this.formElement).get('type').hasError('uniqueLabel')"
       >This field should be unique</mat-error
     >
+  </mat-form-field>
+
+  <mat-form-field *ngIf="this.parentRADesign" appearance="fill">
+    <mat-label>Type to instantiate</mat-label>
+    <input
+      type="text"
+      placeholder="Select what element type to instantiate"
+      aria-label="Number"
+      matInput
+      [formControl]="$any(this.formElement).get('type')"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option
+        fxLayoutAlign="start center"
+        *ngFor="let type of filteredTypes"
+        [value]="type"
+      >
+        <span>{{ type }}</span>
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
 
   <mat-form-field class="example-full-width" appearance="fill">

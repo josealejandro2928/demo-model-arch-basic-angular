@@ -9,7 +9,7 @@ import {
 } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { appIcons } from 'src/utils';
-import { ElementComponent } from '../../models/app.model';
+import { ElementComponent, RADesign } from '../../models/app.model';
 
 export interface FormCreateRAElemet {
   name: string;
@@ -29,12 +29,21 @@ export class DialogAddElementComponent implements OnInit {
   allIcons: { name: string; icon: string }[] = [];
   filteredIcons: { name: string; icon: string }[] = [];
   selectedElement: ElementComponent | undefined;
+  parentRADesign: RADesign | undefined;
+  filteredTypes: string[] = [];
+  allTypes: string[] = [];
+  saDesignMode: boolean = false;
+  allElements: Array<ElementComponent> = [];
   constructor(
     @Inject(MAT_DIALOG_DATA) public dataDialog: any,
     public dialogRef: MatDialogRef<DialogAddElementComponent>,
     private fb: FormBuilder
   ) {
     this.selectedElement = this.dataDialog?.element;
+    this.parentRADesign = this.dataDialog?.parentRADesign;
+    this.saDesignMode = this.dataDialog?.saDesignMode;
+    this.allElements = this.dataDialog?.allElements || [];
+    this.allTypes = this.parentRADesign?.elements.map((e) => e.type) || [];
   }
 
   ngOnInit(): void {
@@ -68,17 +77,31 @@ export class DialogAddElementComponent implements OnInit {
         icon: [null, []],
       });
     }
-    if (!this.selectedElement) {
+    if (!this.selectedElement && !this.parentRADesign) {
       this.formElement?.get('name')?.valueChanges.subscribe((value) => {
         this.formElement?.get('type')?.setValue(this.formatType(value));
       });
     }
+
     this.filteredIcons = this.allIcons;
     this.formElement?.get('icon')?.valueChanges.subscribe((value) => {
       this.filteredIcons = this.allIcons.filter((icon) =>
         icon.name.includes((value || '').trim().toLowerCase())
       );
     });
+
+    if (this.parentRADesign) {
+      this.filteredTypes = this.allTypes;
+      this.formElement?.get('type')?.valueChanges.subscribe((value) => {
+        this.filteredTypes = this.allTypes.filter((el) =>
+          el.includes((value || '').trim().toLowerCase())
+        );
+      });
+
+      this.formElement.get('type')?.setValidators([Validators.required]);
+      this.formElement.get('type')?.setValue('');
+      this.formElement.updateValueAndValidity();
+    }
   }
 
   formatType(str: string | null) {
@@ -101,7 +124,7 @@ export class DialogAddElementComponent implements OnInit {
         return null;
       }
       if (
-        this.dataDialog.allElements.find(
+        this.allElements.find(
           (e: ElementComponent) => e.type === this.formatType(value)
         ) &&
         this.formatType(value) !== this.selectedElement?.type

@@ -33,10 +33,13 @@ export class SuggestionsComponent implements OnInit {
     this.raDesign = value;
     if (this.raDesign?.id == value?.id) this.allSuggestion = [];
     this.makeSuggestions(this.raDesign, this.saDesign);
+    this.cdRef.markForCheck();
   }
   @Input() set _saDesign(value: SADesign | undefined) {
-    this.saDesign = value;
+    // console.log("Enter here: ",value);
+    this.saDesign = { ...value } as any;
     this.makeSuggestions(this.raDesign, this.saDesign);
+    this.cdRef.markForCheck();
   }
   allSuggestion: Array<ISuggestionItem> = [];
 
@@ -63,15 +66,18 @@ export class SuggestionsComponent implements OnInit {
     raDesign: RADesign | undefined,
     saDesign: SADesign | undefined
   ) {
+    // console.log('Enter here');
     for (let raSingleElement of raDesign?.elements || []) {
       let saSingleElement: ElementComponent | undefined | null;
       saSingleElement = saDesign?.elements.find(
         (saEl) => saEl.type == raSingleElement.type
       );
-      if (
-        !saSingleElement &&
-        !this.allSuggestion.find((e) => e.id.includes(raSingleElement.type))
-      ) {
+
+      if (!saSingleElement) {
+        let isPresent =
+          this.allSuggestion.find((e) => e.id.includes(raSingleElement.type)) !=
+          undefined;
+        if (isPresent) return;
         let newSuggestion: ISuggestionItem = {
           action: 'CREATE',
           elementType: 'ElementComponent',
@@ -80,6 +86,8 @@ export class SuggestionsComponent implements OnInit {
           id: `CREATE-${raSingleElement.type}`,
         };
         this.allSuggestion.push(newSuggestion);
+      } else {
+        this.allSuggestion = this.allSuggestion.filter((su)=>(!su.id.includes(saSingleElement?.type as string)));
       }
     }
   }

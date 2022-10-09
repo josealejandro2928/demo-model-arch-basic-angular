@@ -5,12 +5,12 @@ import { delay_ms } from 'src/utils';
 import {
   ConnectionComponent,
   ElementComponent,
+  SADesign,
   RADesign,
 } from '../../models/app.model';
 import { SelectRaDesign } from '../../dialogs/select-ra-design/select-ra-design.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
-import { SADesign } from 'src/models/app.model';
 import { Box, Line } from 'src/library/element';
 import {
   DialogAddElementComponent,
@@ -164,6 +164,8 @@ export class CreateSaArchComponent implements OnInit {
       width: '15cm',
       data: {
         allElements: this.allElements,
+        parentRADesign: this.parentRADesign,
+        saDesignMode: true,
       },
     });
 
@@ -257,7 +259,7 @@ export class CreateSaArchComponent implements OnInit {
   onContextMenu = (block: Box) => {
     let el = this.allElements.find((e) => e.id == block.id);
     if (!el) return;
-    // this.onEditElement(el);
+    this.onEditElement(el);
   };
 
   onSelectionElChange = (block: Box) => {
