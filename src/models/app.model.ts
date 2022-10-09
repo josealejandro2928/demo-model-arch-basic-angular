@@ -42,3 +42,10 @@ export interface SADesign {
   description?: string;
   parentRADesign?: RADesign | string | undefined;
 }
+
+export interface ConsoleItem {
+  id:string;
+  message: string | null | undefined;
+  user: String;
+  date: Date;
+}

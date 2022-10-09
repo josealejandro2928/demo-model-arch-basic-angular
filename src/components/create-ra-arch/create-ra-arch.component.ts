@@ -110,6 +110,10 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
           .setIcon(result.icon)
           .setName(result.name);
         this.saveDesignLocalStore();
+        this.appStateService.setNewConsoleItem(
+          `Edit element id: ${element.id}, name: ${element.name},
+          type: ${element.type}, fill: ${element.uxElement?.options.color}, color: ${element.uxElement?.options.fontColor}`
+        );
       });
   }
 
@@ -140,6 +144,9 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
       valid: true,
     };
     this.allElements.push(newElement);
+    this.appStateService.setNewConsoleItem(
+      `Create new element id: ${newElement.id}, name: ${newElement.name}, type: ${newElement.type}`
+    );
   }
 
   onMoveChanged = (block: Box) => {
@@ -183,6 +190,9 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
     for (let el of [...this.selectionElements]) {
       el?.uxElement?.delete();
       this.onDeleteConnections(el.connections);
+      this.appStateService.setNewConsoleItem(
+        `Delete element id: ${el.id}, type: ${el.type}`
+      );
     }
     this.allElements = this.allElements.filter(
       (el) => !this.selectionElements.has(el)
@@ -196,6 +206,9 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
       co.uxElement?.delete();
       co.block1.connections = co.block1.connections.filter((cx) => cx != co);
       co.block2.connections = co.block2.connections.filter((cx) => cx != co);
+      this.appStateService.setNewConsoleItem(
+        `Delete connection id: ${co.id}, type: ${co.type}`
+      );
     }
     this.allConnections = this.allConnections.filter(
       (el) => !listConnections.includes(el)
@@ -230,11 +243,14 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
     block1?.uxElement?.toogleSelected();
     block2?.uxElement?.toogleSelected();
     this.saveDesignLocalStore();
+    this.appStateService.setNewConsoleItem(
+      `Create new connection id: ${newConnection.id}, block1: ${newConnection.block1.name} and block2: ${newConnection.block2.name} `
+    );
     return newConnection;
   }
 
   onClickRootDesign(event: any) {
-    // console.log('enter here');
+    console.log('enter here');
     event.stopPropagation();
     for (let el of [...this.selectionConnections, ...this.selectionElements]) {
       el.uxElement?.unSelect();
@@ -262,7 +278,7 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
     localStorage.setItem('current-ra-design', '');
     this.id = this.appStateService.createUniqueId();
     this.designName = 'Example';
-    this.description = ""
+    this.description = '';
   }
 
   initCurrentRaDesign(raDesign: RADesign) {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { RADesign } from './models/app.model';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { RADesign, ConsoleItem } from './models/app.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +8,16 @@ import { RADesign } from './models/app.model';
 export class AppStateService {
   listRA: Array<RADesign> = [];
   listSA: Array<RADesign> = [];
+  user = 'jalejandro2928-asus';
+  consoleElements: Array<ConsoleItem> = [
+    {
+      message: 'Hello from console',
+      user: this.user,
+      date: new Date(),
+      id: '1',
+    },
+  ];
+  $consoleUpdate: BehaviorSubject<Array<ConsoleItem>>;
 
   constructor() {
     try {
@@ -25,6 +35,7 @@ export class AppStateService {
       localStorage.setItem('listRA', '[]');
       localStorage.setItem('listSA', '[]');
     }
+    this.$consoleUpdate = new BehaviorSubject(this.consoleElements);
     // console.log(this.listRA, '*******************');
   }
 
@@ -114,5 +125,18 @@ export class AppStateService {
 
   getAllSA(): Observable<RADesign[]> {
     return of(this.listSA);
+  }
+
+  setNewConsoleItem(message = '') {
+    if (this.consoleElements.length > 20) {
+      this.consoleElements = this.consoleElements.slice(1);
+    }
+    this.consoleElements.push({
+      id: this.createUniqueId(),
+      message: message,
+      user: this.user,
+      date: new Date(),
+    });
+    this.$consoleUpdate.next(this.consoleElements);
   }
 }

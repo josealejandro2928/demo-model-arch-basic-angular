@@ -29,6 +29,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ListDesignComponent } from 'src/components/list-design/list-design.component';
 import { DesignItemComponent } from 'src/components/design-item/design-item.component';
+import { ConsoleComponent } from 'src/components/console/console.component';
+import { SuggestionsComponent } from 'src/components/suggestions/suggestions.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { DesignItemComponent } from 'src/components/design-item/design-item.comp
     SelectRaDesign,
     ListDesignComponent,
     DesignItemComponent,
+    ConsoleComponent,
+    SuggestionsComponent,
   ],
   imports: [
     BrowserModule,

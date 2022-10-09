@@ -411,11 +411,12 @@ class Line {
 
   ////////////////////////EVENT LISTENER HANDLERS ///////////////////////////////////////
   listeners() {
-    this.lineEl.addEventListener('dblclick', this.doubleClickHandler);
+    this.lineEl.addEventListener('click', this.doubleClickHandler);
     // this.g.addEventListener("dblclick", this.doubleClickHandler)
   }
 
-  doubleClickHandler = () => {
+  doubleClickHandler = (e: any) => {
+    e.stopPropagation();
     this.toogleSelected();
   };
 

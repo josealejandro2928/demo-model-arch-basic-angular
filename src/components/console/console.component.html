@@ -1,0 +1,20 @@
+<div class="console-component">
+  <ng-container>
+    <div *ngFor="let item of this.appService.$consoleUpdate | async">
+      <span class="user">
+        {{ item.user }}
+      </span>
+      :<span style="color: #0277bd">~</span>$
+      <span class="message">{{ item.message + "," }}</span>
+      <span class="message">{{ item.date | date: "short" }}</span>
+    </div>
+    <div>
+      <span class="user">
+        {{ this.appService.user }}
+      </span>
+      :<span style="color: #0277bd">~</span>$
+      <span class="message">{{ " " }}</span>
+    </div>
+    <div style="height: 16px" id="console-bottom"></div>
+  </ng-container>
+</div>
