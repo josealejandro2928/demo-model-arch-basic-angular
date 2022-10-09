@@ -26,6 +26,9 @@ import { CreateSaArchComponent } from 'src/components/create-sa-arch/create-sa-a
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { SelectRaDesign } from 'src/dialogs/select-ra-design/select-ra-design.component';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ListDesignComponent } from 'src/components/list-design/list-design.component';
+import { DesignItemComponent } from 'src/components/design-item/design-item.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,8 @@ import { MatChipsModule } from '@angular/material/chips';
     DialogSaveRADesign,
     CreateSaArchComponent,
     SelectRaDesign,
+    ListDesignComponent,
+    DesignItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +63,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatProgressSpinnerModule,
     MatTooltipModule,
     MatChipsModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

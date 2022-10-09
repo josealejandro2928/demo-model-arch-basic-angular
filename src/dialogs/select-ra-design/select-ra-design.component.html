@@ -6,7 +6,7 @@
 >
   <div
     *ngFor="let design of this.allRA"
-    class="item"
+    class="design-item"
     (click)="onToogleSelection(design)"
     [ngClass]="{ selected: this.selectionRADesign.has(design) }"
   >

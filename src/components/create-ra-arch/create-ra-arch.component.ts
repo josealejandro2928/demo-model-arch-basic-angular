@@ -136,7 +136,6 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
       type: data.type,
       uxElement: box,
       connections: [],
-      parentInstantiationEl: null,
       isRa: true,
       valid: true,
     };

@@ -1,0 +1,10 @@
+.container {
+  height: calc(100% - 64px - 32px);
+  border-radius: 8px;
+}
+
+:host ::ng-deep {
+  .mat-tab-label-content {
+    text-transform: uppercase;
+  }
+}

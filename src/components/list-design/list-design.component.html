@@ -1,0 +1,21 @@
+<div class="h-100">
+  <app-toolbar title="Designs." [_name]="''"></app-toolbar>
+  <div class="container bg-gray">
+    <mat-tab-group>
+      <mat-tab label="Reference Architecture">
+        <br />
+        <ng-container *ngFor="let design of this.allRA">
+          <app-design-item [_design]="design"></app-design-item>
+          <br />
+        </ng-container>
+      </mat-tab>
+      <mat-tab label="Software Architecture">
+        <br />
+        <ng-container *ngFor="let design of this.allSA">
+          <app-design-item [_design]="design"></app-design-item>
+          <br />
+        </ng-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>

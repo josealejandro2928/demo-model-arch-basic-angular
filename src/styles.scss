@@ -107,3 +107,13 @@ body {
   display: grid;
   place-items: center;
 }
+
+.link {
+  text-align: center;
+  color: #03a9f4;
+  font-size: 16px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

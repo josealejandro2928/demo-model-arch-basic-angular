@@ -7,16 +7,23 @@ import { RADesign } from './models/app.model';
 })
 export class AppStateService {
   listRA: Array<RADesign> = [];
+  listSA: Array<RADesign> = [];
 
   constructor() {
     try {
       this.listRA = JSON.parse(localStorage.getItem('listRA') as any);
+      this.listSA = JSON.parse(localStorage.getItem('listSA') as any);
       if (!this.listRA) {
         localStorage.setItem('listRA', '[]');
         this.listRA = [];
       }
+      if (!this.listSA) {
+        localStorage.setItem('listSA', '[]');
+        this.listSA = [];
+      }
     } catch (e) {
       localStorage.setItem('listRA', '[]');
+      localStorage.setItem('listSA', '[]');
     }
     // console.log(this.listRA, '*******************');
   }
@@ -100,7 +107,12 @@ export class AppStateService {
     }
     localStorage.setItem('listRA', JSON.stringify(this.listRA));
   }
+
   getAllRA(): Observable<RADesign[]> {
     return of(this.listRA);
+  }
+
+  getAllSA(): Observable<RADesign[]> {
+    return of(this.listSA);
   }
 }

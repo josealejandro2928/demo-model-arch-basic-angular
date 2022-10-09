@@ -1,0 +1,28 @@
+<div class="design-item">
+  <h3>
+    {{ design?.name }}
+    <ng-container *ngIf="$any(this.design).parentRADesign">
+      <span>: implements </span>
+      <a class="link">
+        <span style="font-weight: 500"> Web Application </span>
+      </a>
+    </ng-container>
+  </h3>
+  <p class="desc">{{ design?.description }}</p>
+
+  <p class="mat-body-2" style="margin-bottom: 4px">
+    Components and Connections:
+  </p>
+  <mat-chip-list style="margin-bottom: 4px">
+    <mat-chip *ngFor="let item of design?.elements">{{ item.type }}</mat-chip>
+    <mat-chip>connections: {{ design?.connections?.length }}</mat-chip>
+  </mat-chip-list>
+  <button
+    matTooltip="See details"
+    class="details"
+    mat-mini-fab
+    (click)="seeDetails($event, design)"
+  >
+    <mat-icon>info</mat-icon>
+  </button>
+</div>

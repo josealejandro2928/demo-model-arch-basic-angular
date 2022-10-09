@@ -4,11 +4,16 @@ import { HomeComponent } from '../components/home/home.component';
 import { ErrorComponent } from '../components/error/error.component';
 import { CreateRaArchComponent } from '../components/create-ra-arch/create-ra-arch.component';
 import { CreateSaArchComponent } from 'src/components/create-sa-arch/create-sa-arch.component';
+import { ListDesignComponent } from '../components/list-design/list-design.component';
 
 const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+  },
+  {
+    path: 'index',
+    component: ListDesignComponent,
   },
   { path: 'create-RA', component: CreateRaArchComponent },
   { path: 'create-ra', component: CreateRaArchComponent },
@@ -22,6 +27,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+exports: [RouterModule],
 })
 export class AppRoutingModule {}
