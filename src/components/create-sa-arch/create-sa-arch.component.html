@@ -19,7 +19,7 @@
         (saveDesign)="onSaveDesign()"
         [_connections]="this.allConnections"
         [_elements]="this.allElements"
-        color='accent'
+        color="accent"
       ></app-modeler>
     </nav>
     <section class="content">
@@ -28,6 +28,15 @@
         <div class="loading-spiner" *ngIf="this.loading">
           <mat-spinner color="accent"></mat-spinner>
         </div>
+        <button
+          matTooltip="Open full screen"
+          id="open-full-screen-btn"
+          mat-icon-button
+          (click)="onOpenFullScreen()"
+        >
+          <mat-icon *ngIf="fullScreenMode">close_fullscreen</mat-icon>
+          <mat-icon *ngIf="!fullScreenMode">open_in_full</mat-icon>
+        </button>
       </div>
 
       <div class="console">

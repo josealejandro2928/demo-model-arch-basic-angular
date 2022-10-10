@@ -46,6 +46,7 @@ export class CreateSaArchComponent implements OnInit {
   posY = 10;
   valid = false;
   rootDesign: HTMLElement | null = null;
+  fullScreenMode = false;
   constructor(
     private appStateService: AppStateService,
     public dialog: MatDialog,
@@ -463,6 +464,28 @@ export class CreateSaArchComponent implements OnInit {
         icon: 'code',
       });
       return;
+    }
+    if (sugg.action == 'DISCONNECT') {
+      const [connId] = sugg.objectsIds;
+      this.onDeleteConnections(
+        this.allConnections.filter((cc) => cc.id == connId)
+      );
+      return;
+    }
+  }
+
+  async onOpenFullScreen() {
+    let pageGrid = document.querySelector('.page-grid');
+    if (!pageGrid) return;
+    if (this.fullScreenMode) {
+      this.fullScreenMode = false;
+      window.document.exitFullscreen();
+    } else {
+      await pageGrid?.requestFullscreen();
+      // let console: any = pageGrid.querySelector('.console');
+      // console.style.height = 'calc(100% - 80% - 32px)';
+      // (this.rootDesign as any).style.maxHeight = '80%';
+      this.fullScreenMode = true;
     }
   }
 

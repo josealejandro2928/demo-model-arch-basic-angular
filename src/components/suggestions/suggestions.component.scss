@@ -10,6 +10,7 @@ hr {
 .sugg-cont {
   max-height: 82vh;
   overflow: auto;
+  height: 100%;
 }
 
 .item {
@@ -19,10 +20,13 @@ hr {
   border: 1px solid rgba(0, 0, 0, 0.2);
   cursor: pointer;
   position: relative;
+  animation: fade-in-up .5s ease;
+  animation-fill-mode: forwards;
+  opacity: 0;
 
   &:hover {
     // background-color: #fafafa;
-    filter: brightness(.85);
+    filter: brightness(0.85);
   }
   .msg::ng-deep {
     font-size: 13px;
@@ -42,6 +46,36 @@ hr {
     position: absolute;
     bottom: 0px;
     right: 4px;
-    opacity: .9 ;
+    opacity: 0.9;
   }
+}
+
+.item:nth-of-type(1) {
+  animation-delay: .1s;
+}
+
+.item:nth-of-type(2) {
+  animation-delay: .2s;
+}
+.item:nth-of-type(3) {
+  animation-delay: .3s;
+}
+.item:nth-of-type(4) {
+  animation-delay: .4s;
+}
+
+.item:nth-of-type(5) {
+  animation-delay: .5s;
+}
+
+.item:nth-of-type(6) {
+  animation-delay: .6s;
+}
+
+.item:nth-of-type(7) {
+  animation-delay: .7s;
+}
+
+.item:nth-of-type(8) {
+  animation-delay: .8s;
 }

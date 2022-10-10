@@ -79,6 +79,7 @@ export class SuggestionsComponent implements OnInit {
     }
     this.makeSuggestionOfCreation(raDesign, saDesign);
     this.makeSuggestionOfConnection(raDesign, saDesign);
+    this.makeSuggestionOfInvalidConnection(raDesign, saDesign);
     // console.log('this.allSuggestion', this.allSuggestion);
   }
 
@@ -154,6 +155,48 @@ export class SuggestionsComponent implements OnInit {
             );
           }
         }
+      }
+    }
+  }
+
+  makeSuggestionOfInvalidConnection(
+    raDesign: RADesign | undefined,
+    saDesign: SADesign | undefined
+  ) {
+    // console.log('Enter here');
+    for (let saConnection of saDesign?.connections || []) {
+      let typeEl1 = saConnection.block1.type;
+      let typeEl2 = saConnection.block2.type;
+      // debugger;
+      if (typeEl1 == typeEl2) continue;
+      let connectionOnRA: ConnectionComponent | undefined =
+        this.raDesign?.connections.find((raC) => {
+          let block1RA = raDesign?.elements.find((e) => e.id == raC?.block1Id);
+          let block2RA = raDesign?.elements.find((e) => e.id == raC?.block2Id);
+          if (
+            (block1RA?.type == typeEl1 && block2RA?.type == typeEl2) ||
+            (block1RA?.type == typeEl2 && block2RA?.type == typeEl1)
+          )
+            return true;
+          return false;
+        });
+      let idSuggestion = `DISCONNECT-${saConnection.id}`;
+      if (!connectionOnRA) {
+        let newSuggestion: ISuggestionItem = {
+          action: 'DISCONNECT',
+          elementType: 'ConnectionComponent',
+          objectsIds: [saConnection?.id],
+          message: `Delete the connection between <strong>${saConnection.block1.name} </strong>
+          and <strong>${saConnection.block2.name}</strong>, it is <strong>violating</strong> the constraint defined in the chossen RA`,
+          id: idSuggestion,
+          severity: 'ERROR',
+        };
+        this.allSuggestion.push(newSuggestion);
+        saConnection.uxElement?.setColor('red');
+      } else {
+        this.allSuggestion = this.allSuggestion.filter(
+          (s) => s.id != idSuggestion
+        );
       }
     }
   }
