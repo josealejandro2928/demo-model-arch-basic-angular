@@ -427,11 +427,12 @@ class Line {
       this.selected = false;
       this.lineEl.setAttribute('stroke-width', 3);
       this.lineEl.setAttribute('stroke', this.options.color);
+      this.lineEl.style.stroke = this.options.color;
       this.events.selectionChange(this, false);
     } else {
       this.selected = true;
       this.lineEl.setAttribute('stroke-width', 5);
-      this.lineEl.setAttribute('stroke', '#66bb6a');
+      this.lineEl.style.stroke = '#66bb6a';
       this.events.selectionChange(this, true);
     }
   }
@@ -440,6 +441,7 @@ class Line {
     this.selected = false;
     this.lineEl.setAttribute('stroke-width', 3);
     this.lineEl.setAttribute('stroke', this.options.color);
+    this.lineEl.style.stroke = this.options.color;
     if (withEvent) this.events.selectionChange(this, false);
   }
 

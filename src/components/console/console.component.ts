@@ -5,7 +5,7 @@ import {
   OnDestroy,
 } from '@angular/core';
 import { Subject, takeUntil } from 'rxjs';
-import { AppStateService } from 'src/app-state.service';
+import { AppStateService } from 'src/services/app-state.service';
 import { ConsoleItem } from 'src/models/app.model';
 
 @Component({

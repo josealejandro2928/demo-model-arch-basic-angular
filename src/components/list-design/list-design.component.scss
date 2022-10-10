@@ -1,6 +1,7 @@
 .container {
   height: calc(100% - 64px - 32px);
   border-radius: 8px;
+  overflow: auto;
 }
 
 :host ::ng-deep {

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RADesign } from '../../models/app.model';
-import { AppStateService } from 'src/app-state.service';
+import { AppStateService } from 'src/services/app-state.service';
 import { Router } from '@angular/router';
 
 @Component({

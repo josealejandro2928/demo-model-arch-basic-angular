@@ -4,7 +4,7 @@
     <ng-container *ngIf="$any(this.design).parentRADesign">
       <span>: implements </span>
       <a class="link">
-        <span style="font-weight: 500"> Web Application </span>
+        <span style="font-weight: 500"> {{$any(this.design).parentRADesign?.name}} </span>
       </a>
     </ng-container>
   </h3>
@@ -20,9 +20,17 @@
   <button
     matTooltip="See details"
     class="details"
-    mat-mini-fab
+    mat-icon-button
     (click)="seeDetails($event, design)"
   >
     <mat-icon>info</mat-icon>
+  </button>
+  <button
+    matTooltip="Remove design"
+    class="remove"
+    mat-icon-button
+    (click)="onDelete($event, design)"
+  >
+    <mat-icon>delete</mat-icon>
   </button>
 </div>

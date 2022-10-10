@@ -5,14 +5,20 @@
       <mat-tab label="Reference Architecture">
         <br />
         <ng-container *ngFor="let design of this.allRA">
-          <app-design-item [_design]="design"></app-design-item>
+          <app-design-item
+            (deleteEvent)="onDeleteRA($event)"
+            [_design]="design"
+          ></app-design-item>
           <br />
         </ng-container>
       </mat-tab>
       <mat-tab label="Software Architecture">
         <br />
         <ng-container *ngFor="let design of this.allSA">
-          <app-design-item [_design]="design"></app-design-item>
+          <app-design-item
+            (deleteEvent)="onDeleteSA($event)"
+            [_design]="design"
+          ></app-design-item>
           <br />
         </ng-container>
       </mat-tab>

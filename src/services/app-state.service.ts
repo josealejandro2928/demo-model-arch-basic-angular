@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { RADesign, ConsoleItem, SADesign } from './models/app.model';
+import { RADesign, ConsoleItem, SADesign } from '../models/app.model';
 
 @Injectable({
   providedIn: 'root',
@@ -96,6 +96,10 @@ export class AppStateService {
     localStorage.setItem('current-ra-design', JSON.stringify(data));
   }
 
+  setCurrentSADesign(data: SADesign) {
+    localStorage.setItem('current-sa-design', JSON.stringify(data));
+  }
+
   getCurrentSADesign() {
     let currentSADesign: any;
     try {
@@ -121,6 +125,28 @@ export class AppStateService {
       this.listRA.push(element);
     }
     localStorage.setItem('listRA', JSON.stringify(this.listRA));
+  }
+
+  deleteRA(element: RADesign) {
+    this.listRA = this.listRA.filter((e) => e.id != element.id);
+    localStorage.setItem('listRA', JSON.stringify(this.listRA));
+    return this.listRA;
+  }
+
+  deleteSA(element: RADesign) {
+    this.listSA = this.listSA.filter((e) => e.id != element.id);
+    localStorage.setItem('listSA', JSON.stringify(this.listSA));
+    return this.listSA;
+  }
+
+  saveSA(element: SADesign) {
+    let index = this.listSA.findIndex((e) => e.id == element.id);
+    if (index > -1) {
+      this.listSA[index] = element;
+    } else {
+      this.listSA.push(element);
+    }
+    localStorage.setItem('listSA', JSON.stringify(this.listSA));
   }
 
   getAllRA(): Observable<RADesign[]> {

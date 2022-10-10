@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AppStateService } from 'src/app-state.service';
+import { AppStateService } from 'src/services/app-state.service';
 import { RADesign, SADesign } from '../../models/app.model';
 import { firstValueFrom } from 'rxjs';
 
@@ -20,5 +20,13 @@ export class ListDesignComponent implements OnInit {
     } catch (e) {
       console.error(e);
     }
+  }
+  onDeleteRA(design: RADesign) {
+    if (confirm(`Would you like to eliminate ${design.name}`))
+      this.allRA = this.appService.deleteRA(design);
+  }
+  onDeleteSA(design: SADesign) {
+    if (confirm(`Would you like to eliminate ${design.name}`))
+      this.allSA = this.appService.deleteSA(design);
   }
 }

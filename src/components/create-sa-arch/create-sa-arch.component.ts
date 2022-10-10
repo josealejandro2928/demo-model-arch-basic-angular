@@ -5,7 +5,7 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AppStateService } from 'src/app-state.service';
+import { AppStateService } from 'src/services/app-state.service';
 import { delay_ms } from 'src/utils';
 import {
   ConnectionComponent,
@@ -23,7 +23,6 @@ import {
 } from 'src/dialogs/dialog-add-element/dialog-add-element.component';
 import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-save-ra-design.component';
 import { ISuggestionItem } from '../suggestions/suggestions.component';
-
 @Component({
   selector: 'app-create-sa-arch',
   templateUrl: './create-sa-arch.component.html',
@@ -47,6 +46,7 @@ export class CreateSaArchComponent implements OnInit {
   valid = false;
   rootDesign: HTMLElement | null = null;
   fullScreenMode = false;
+  printState = false;
   constructor(
     private appStateService: AppStateService,
     public dialog: MatDialog,
@@ -82,6 +82,7 @@ export class CreateSaArchComponent implements OnInit {
     this.currentSADesign = this.appStateService.getCurrentSADesign();
     if (!this.currentSADesign) {
       this.loading = false;
+      this.cdRef.markForCheck();
       return;
     }
     this.initCurrentSADesign(this.currentSADesign);
@@ -89,6 +90,7 @@ export class CreateSaArchComponent implements OnInit {
       `Current SA design loaded: ${this.currentSADesign.name}`
     );
     this.loading = false;
+    this.cdRef.markForCheck();
   }
 
   initCurrentSADesign(saDesign: SADesign) {
@@ -325,7 +327,9 @@ export class CreateSaArchComponent implements OnInit {
     this.allElements.map((el) => this.selectionElements.add(el));
     this.onDeleteConnections(this.allConnections);
     this.onDeleteElements();
-    localStorage.setItem('current-ra-design', '');
+    localStorage.setItem('current-sa-design', '');
+    // localStorage.setItem('current-sa-design', '');
+    this.parentRADesign = null;
     this.id = this.appStateService.createUniqueId();
     this.designName = 'Example';
     this.description = '';
@@ -482,12 +486,11 @@ export class CreateSaArchComponent implements OnInit {
       window.document.exitFullscreen();
     } else {
       await pageGrid?.requestFullscreen();
-      // let console: any = pageGrid.querySelector('.console');
-      // console.style.height = 'calc(100% - 80% - 32px)';
-      // (this.rootDesign as any).style.maxHeight = '80%';
       this.fullScreenMode = true;
     }
   }
+
+  onPrint(e: any) {}
 
   onSaveDesign() {
     const dialogRef = this.dialog.open(DialogSaveRADesign, {
@@ -496,6 +499,9 @@ export class CreateSaArchComponent implements OnInit {
       width: '15cm',
       data: {
         element: this.saveDesignLocalStore(),
+        raDesign: this.parentRADesign,
+        saDesign: this.getSADesign(),
+        isSADesign: true,
       },
     });
 
@@ -503,9 +509,9 @@ export class CreateSaArchComponent implements OnInit {
       if (!result) return;
       this.description = result.description as string;
       this.saveDesignLocalStore();
-      this.appStateService.saveRA(result);
+      this.appStateService.saveSA(result);
       this.onDeleteDesign();
-      this.router.navigate(['']);
+      this.router.navigate(['index']);
     });
   }
 }
