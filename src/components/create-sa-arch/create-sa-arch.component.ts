@@ -22,12 +22,13 @@ import {
   FormCreateRAElemet,
 } from 'src/dialogs/dialog-add-element/dialog-add-element.component';
 import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-save-ra-design.component';
+import { ISuggestionItem } from '../suggestions/suggestions.component';
 
 @Component({
   selector: 'app-create-sa-arch',
   templateUrl: './create-sa-arch.component.html',
   styleUrls: ['./create-sa-arch.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateSaArchComponent implements OnInit {
   designName = 'Example SA';
@@ -287,6 +288,7 @@ export class CreateSaArchComponent implements OnInit {
     } else {
       this.selectionElements.add(elementComponent);
     }
+    this.cdRef.markForCheck();
   };
 
   onSelectionConnectionChange = (line: Line) => {
@@ -299,6 +301,7 @@ export class CreateSaArchComponent implements OnInit {
     } else {
       this.selectionConnections.add(connectionComponent);
     }
+    this.cdRef.markForCheck();
   };
 
   onDeleteElements = () => {
@@ -438,6 +441,29 @@ export class CreateSaArchComponent implements OnInit {
 
   saveDesignLocalStore() {
     return this.appStateService.saveCurrentDesign(this.getSADesign());
+  }
+
+  onExceSuggestion(sugg: ISuggestionItem) {
+    if (sugg.action == 'CONNECT') {
+      const [block1Id, block2Id] = sugg.objectsIds;
+      let block1 = this.allElements.find((e) => e.id == block1Id);
+      let block2 = this.allElements.find((e) => e.id == block2Id);
+      if (block1 && block2) {
+        this.onConnectTwoElements({ block1, block2 });
+      }
+      return;
+    }
+    if (sugg.action == 'CREATE') {
+      let type = sugg.id.split('CREATE-').at(-1);
+      this.createNewElement({
+        type: type as string,
+        name: type as string,
+        color: '#000',
+        fill: '#fff9c4',
+        icon: 'code',
+      });
+      return;
+    }
   }
 
   onSaveDesign() {

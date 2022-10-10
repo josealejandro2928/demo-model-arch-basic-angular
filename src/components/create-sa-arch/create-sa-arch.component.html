@@ -38,6 +38,7 @@
       <app-suggestions
         [_raDesign]="$any(this.parentRADesign)"
         [_saDesign]="this.getSADesign()"
+        (onAutomaticSuggestionExce)="onExceSuggestion($event)"
       ></app-suggestions>
     </nav>
     <div matTooltip="Select a Reference Architecture" class="fab-btn">

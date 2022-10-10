@@ -1,13 +1,35 @@
-<h2 class="mat-h2">Suggestions</h2>
+<div fxLayout="row" fxLayoutAlign="space-between center">
+  <h2 class="mat-h2">Suggestions</h2>
+  <button mat-icon-button (click)="onRestore()">
+    <mat-icon class="mat-18">restore</mat-icon>
+  </button>
+</div>
 <hr />
-<div fxLayout="column" fxLayoutAlign="start stretch">
+<div fxLayout="column" fxLayoutAlign="start stretch" class="sugg-cont">
   <ng-container *ngIf="!this.allSuggestion.length">
     <p>There is not suggestion for this design</p>
   </ng-container>
   <ng-container *ngIf="this.allSuggestion.length">
-    <div *ngFor="let item of this.allSuggestion" class="item">
-      <div class="msg" [innerHtml]="item.message"></div>
-      <div class="action"></div>
-    </div>
+    <ng-container *ngFor="let item of this.allSuggestion">
+      <div (click)="onClickSuggestion(item)"
+        *ngIf="!this.suggestionRejected?.has(item.id)"
+        class="item"
+        [ngClass]="{
+          error: item.severity == 'ERROR',
+          warning: item.severity == 'WARNING'
+        }"
+      >
+        <div class="msg" [innerHtml]="item.message"></div>
+        <div class="action">
+          <button
+            *ngIf="item.severity != 'ERROR'"
+            mat-icon-button
+            (click)="onReject($event, item)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </ng-container>
   </ng-container>
 </div>

@@ -7,6 +7,10 @@ hr {
   margin-block-start: 8px;
   margin-block-end: 8px;
 }
+.sugg-cont {
+  max-height: 82vh;
+  overflow: auto;
+}
 
 .item {
   padding: 8px;
@@ -17,12 +21,27 @@ hr {
   position: relative;
 
   &:hover {
-    background-color: #fafafa;
+    // background-color: #fafafa;
+    filter: brightness(.85);
   }
   .msg::ng-deep {
     font-size: 13px;
     strong {
       font-weight: 500 !important;
     }
+  }
+  &.error {
+    background-color: #ffcdd2;
+    border-color: #f44336;
+  }
+  &.warning {
+    background-color: #fffde7;
+    border-color: #ffeb3b;
+  }
+  .action {
+    position: absolute;
+    bottom: 0px;
+    right: 4px;
+    opacity: .9 ;
   }
 }
