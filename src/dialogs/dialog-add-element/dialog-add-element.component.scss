@@ -1,0 +1,10 @@
+.form-icon {
+  position: relative;
+  .icon-selected {
+    position: absolute;
+    right: 8px;
+    top: 25%;
+    font-size: 30px;
+    transform: translateY(-50%);
+  }
+}

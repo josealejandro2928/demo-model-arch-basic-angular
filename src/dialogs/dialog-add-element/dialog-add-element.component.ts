@@ -94,12 +94,12 @@ export class DialogAddElementComponent implements OnInit {
       this.filteredTypes = this.allTypes;
       this.formElement?.get('type')?.valueChanges.subscribe((value) => {
         this.filteredTypes = this.allTypes.filter((el) =>
-          el.includes((value || '').trim().toLowerCase())
+          el.toLowerCase().includes((value || '').trim().toLowerCase())
         );
       });
-
+      if (!this.dataDialog?.isEdition)
+        this.formElement.get('type')?.setValue('');
       this.formElement.get('type')?.setValidators([Validators.required]);
-      this.formElement.get('type')?.setValue('');
       this.formElement.updateValueAndValidity();
     }
   }

@@ -143,4 +143,18 @@ export class AppStateService {
     });
     this.$consoleUpdate.next(this.consoleElements);
   }
+
+  getRA(el: RADesign | string) {
+    let ra: RADesign | undefined = undefined;
+    if (el instanceof Object) {
+      ra = this.listRA.find((item) => item.id == el.id);
+    } else {
+      ra = this.listRA.find((item) => item.id == el);
+    }
+    if (!ra)
+      throw Error(
+        'There is not any Reference Architecture Design with that id'
+      );
+    return ra;
+  }
 }

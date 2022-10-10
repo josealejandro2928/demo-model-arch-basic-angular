@@ -23,6 +23,7 @@ export const appIcons = [
   { name: 'notification', icon: 'notifications' },
   { name: 'action', icon: 'done' },
   { name: 'download', icon: 'download_for_offline' },
+  { name: 'details', icon: 'info' },
 ];
 
 export const delay_ms = async (ms: number) => {

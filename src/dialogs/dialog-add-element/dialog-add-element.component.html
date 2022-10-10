@@ -80,7 +80,7 @@
     </mat-autocomplete>
   </mat-form-field>
 
-  <mat-form-field class="example-full-width" appearance="fill">
+  <mat-form-field class="form-icon" appearance="fill">
     <mat-label>Select an icon</mat-label>
     <input
       type="text"
@@ -96,11 +96,17 @@
         *ngFor="let icon of filteredIcons"
         [value]="icon.icon"
       >
-        <!-- <mat-icon>{{ icon.icon }}</mat-icon> -->
         <span class="material-symbols-outlined"> {{ icon.icon }} </span>
         <span>{{ icon.name }}</span>
       </mat-option>
     </mat-autocomplete>
+
+    <span
+      *ngIf="$any(this.formElement).get('icon').value"
+      class="material-symbols-outlined icon-selected"
+    >
+      {{ $any(this.formElement).get("icon").value }}
+    </span>
   </mat-form-field>
 </mat-dialog-content>
 

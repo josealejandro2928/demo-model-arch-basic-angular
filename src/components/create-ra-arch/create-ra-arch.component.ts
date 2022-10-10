@@ -370,7 +370,7 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
       this.saveDesignLocalStore();
       this.appStateService.saveRA(result);
       this.onDeleteDesign();
-      this.router.navigate(['']);
+      this.router.navigate(['index']);
     });
   }
 }

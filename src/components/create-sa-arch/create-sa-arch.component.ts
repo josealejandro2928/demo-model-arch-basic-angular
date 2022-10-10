@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AppStateService } from 'src/app-state.service';
 import { delay_ms } from 'src/utils';
@@ -22,6 +27,7 @@ import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-sav
   selector: 'app-create-sa-arch',
   templateUrl: './create-sa-arch.component.html',
   styleUrls: ['./create-sa-arch.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateSaArchComponent implements OnInit {
   designName = 'Example SA';
@@ -43,7 +49,8 @@ export class CreateSaArchComponent implements OnInit {
     private appStateService: AppStateService,
     public dialog: MatDialog,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cdRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -87,6 +94,12 @@ export class CreateSaArchComponent implements OnInit {
       this.id = saDesign.id;
       this.designName = saDesign.name;
       this.description = saDesign.description as string;
+      /////// Get the most updated version of the RA design ////////
+      if (saDesign.parentRADesign) {
+        saDesign.parentRADesign = this.appStateService.getRA(
+          saDesign.parentRADesign
+        );
+      }
       this.parentRADesign = saDesign.parentRADesign as RADesign;
       /////////////ELEMENTS////////////////////////
       for (let el of saDesign.elements) {
@@ -219,6 +232,8 @@ export class CreateSaArchComponent implements OnInit {
         allElements: this.allElements,
         element: selectedEl,
         isEdition: true,
+        parentRADesign: this.parentRADesign,
+        saDesignMode: true,
       },
     });
 
