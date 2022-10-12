@@ -1,6 +1,6 @@
 <h2 class="mat-h2">Components</h2>
-<hr>
-<div fxLayout="column" fxLayoutAlign="start stretch">
+<hr />
+<div fxLayout="column" fxLayoutAlign="start stretch" style="gap: 1rem">
   <button
     (click)="this.addNewElement.next($event)"
     mat-raised-button
@@ -9,7 +9,6 @@
     <mat-icon>add</mat-icon>
     New Element
   </button>
-  <br />
   <button
     (click)="this.editElement.next($event)"
     mat-raised-button
@@ -19,7 +18,6 @@
     <mat-icon>edit</mat-icon>
     Edit Element
   </button>
-  <br />
   <button
     (click)="onConnect()"
     mat-raised-button
@@ -29,7 +27,6 @@
     <mat-icon>link</mat-icon>
     Conn. Elements
   </button>
-  <br />
   <button
     (click)="this.deleteElements.next($event)"
     mat-raised-button
@@ -39,7 +36,6 @@
     <mat-icon>delete</mat-icon>
     Del Elements
   </button>
-  <br />
   <h2 class="mat-h2">Connections</h2>
   <button
     (click)="onDeleteConnections()"
