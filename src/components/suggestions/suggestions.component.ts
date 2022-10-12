@@ -6,14 +6,11 @@ import {
   ChangeDetectorRef,
   Output,
   EventEmitter,
+  OnDestroy,
 } from '@angular/core';
-import {
-  ConnectionComponent,
-  ElementComponent,
-  RADesign,
-  SADesign,
-} from 'src/models/app.model';
+import { RADesign, SADesign } from 'src/models/app.model';
 import { ValidationService } from 'src/services/validation.service';
+import { Subject, takeUntil } from 'rxjs';
 
 export interface ISuggestionItem {
   action: 'CREATE' | 'DELETE' | 'CONNECT' | 'DISCONNECT';
@@ -30,31 +27,16 @@ export interface ISuggestionItem {
   styleUrls: ['./suggestions.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SuggestionsComponent implements OnInit {
-  raDesign: RADesign | undefined = undefined;
-  saDesign: SADesign | undefined = undefined;
+export class SuggestionsComponent implements OnInit, OnDestroy {
+  @Input() raDesign: RADesign | undefined = undefined;
+  @Input() saDesign: SADesign | undefined = undefined;
+  @Input() enabled = true;
   suggestionRejected: Set<string> | undefined = new Set();
+  _unsubscribeAll = new Subject<any>();
+
   @Output() onAutomaticSuggestionExce: EventEmitter<ISuggestionItem> =
     new EventEmitter();
 
-  @Input() set _raDesign(value: RADesign | undefined) {
-    this.raDesign = value;
-    this.allSuggestion = this.validationService.makeSuggestions(
-      this.raDesign,
-      this.saDesign
-    );
-    this.cdRef.markForCheck();
-  }
-  @Input() set _saDesign(value: SADesign | undefined) {
-    // console.log("Enter here: ",value);
-    this.saDesign = value;
-    this.allSuggestion = this.validationService.makeSuggestions(
-      this.raDesign,
-      this.saDesign
-    );
-    this.getInitialSUggestionRejected();
-    this.cdRef.markForCheck();
-  }
   allSuggestion: Array<ISuggestionItem> = [];
 
   constructor(
@@ -62,15 +44,33 @@ export class SuggestionsComponent implements OnInit {
     private validationService: ValidationService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (!this.enabled) return;
+    this.validationService.$getNewValidations
+      .pipe(takeUntil(this._unsubscribeAll))
+      .subscribe(({ raDesign, saDesign }) => {
+        this.raDesign = raDesign;
+        this.saDesign = saDesign;
+        this.getInitialSuggestionRejected();
+        console.log(this.raDesign, this.saDesign);
+        this.allSuggestion = this.validationService.makeSuggestions(
+          this.raDesign,
+          this.saDesign
+        );
+        this.cdRef.markForCheck();
+      });
+  }
 
-  getInitialSUggestionRejected() {
+  ngOnDestroy(): void {
+    this._unsubscribeAll.next(true);
+    this._unsubscribeAll.complete();
+  }
+
+  getInitialSuggestionRejected() {
     let meta: any = localStorage.getItem(this.saDesign?.id as string);
-    // console.log(meta);
     if (!meta) return;
     meta = JSON.parse(meta);
     this.suggestionRejected = new Set(meta?.suggestionRejected);
-    // console.log(this.suggestionRejected);
   }
 
   onReject(e: any, item: ISuggestionItem) {

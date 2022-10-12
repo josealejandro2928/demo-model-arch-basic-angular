@@ -46,8 +46,8 @@
     </section>
     <nav class="sug">
       <app-suggestions
-        [_raDesign]="$any(this.parentRADesign)"
-        [_saDesign]="this.getSADesign()"
+        [raDesign]="$any(this.parentRADesign)"
+        [saDesign]="this.getSADesign()"
         (onAutomaticSuggestionExce)="onExceSuggestion($event)"
       ></app-suggestions>
     </nav>

@@ -6,11 +6,13 @@ import {
   SADesign,
 } from 'src/models/app.model';
 import { ISuggestionItem } from '../components/suggestions/suggestions.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ValidationService {
+  $getNewValidations = new BehaviorSubject<any>({});
   constructor() {}
 
   makeSuggestions(

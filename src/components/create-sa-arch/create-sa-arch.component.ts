@@ -23,6 +23,7 @@ import {
 } from 'src/dialogs/dialog-add-element/dialog-add-element.component';
 import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-save-ra-design.component';
 import { ISuggestionItem } from '../suggestions/suggestions.component';
+import { ValidationService } from 'src/services/validation.service';
 @Component({
   selector: 'app-create-sa-arch',
   templateUrl: './create-sa-arch.component.html',
@@ -52,7 +53,8 @@ export class CreateSaArchComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     private route: ActivatedRoute,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private validationService: ValidationService
   ) {}
 
   ngOnInit(): void {
@@ -80,20 +82,22 @@ export class CreateSaArchComponent implements OnInit {
     await delay_ms(1000);
     this.rootDesign = document.querySelector('#box-cont');
     this.currentSADesign = this.appStateService.getCurrentSADesign();
-    if (!this.currentSADesign) {
-      this.loading = false;
-      this.cdRef.markForCheck();
-      return;
+    if (this.currentSADesign) {
+      this.initCurrentSADesign(this.currentSADesign);
+      this.appStateService.setNewConsoleItem(
+        `Current SA design loaded: ${this.currentSADesign.name}`
+      );
     }
-    this.initCurrentSADesign(this.currentSADesign);
-    this.appStateService.setNewConsoleItem(
-      `Current SA design loaded: ${this.currentSADesign.name}`
-    );
     this.loading = false;
+    this.validationService.$getNewValidations.next({
+      raDesign: this.parentRADesign,
+      saDesign: this.getSADesign(),
+    });
     this.cdRef.markForCheck();
   }
 
-  initCurrentSADesign(saDesign: SADesign) {
+  initCurrentSADesign(saDesign?: SADesign | undefined) {
+    if (!saDesign) return;
     try {
       this.id = saDesign.id;
       this.designName = saDesign.name;
@@ -272,7 +276,7 @@ export class CreateSaArchComponent implements OnInit {
     Line.updateConnectionsPositions(
       this.allConnections.map((c) => c.uxElement as Line)
     );
-    this.saveDesignLocalStore();
+    this.saveDesignLocalStore(false);
   };
 
   onContextMenu = (block: Box) => {
@@ -333,6 +337,7 @@ export class CreateSaArchComponent implements OnInit {
     this.id = this.appStateService.createUniqueId();
     this.designName = 'Example';
     this.description = '';
+    this.validationService.$getNewValidations.next({});
   }
 
   onDeleteConnections(listConnections: Array<ConnectionComponent>) {
@@ -384,7 +389,6 @@ export class CreateSaArchComponent implements OnInit {
   }
 
   onClickRootDesign(event: any) {
-    console.log('enter here');
     event.stopPropagation();
     for (let el of [...this.selectionConnections, ...this.selectionElements]) {
       el.uxElement?.unSelect();
@@ -404,6 +408,7 @@ export class CreateSaArchComponent implements OnInit {
   }
 
   openModalSelectRA() {
+    // console.log(this.parentRADesign);
     const dialogRef = this.dialog.open(SelectRaDesign, {
       maxHeight: '90vh',
       maxWidth: '100%',
@@ -423,11 +428,11 @@ export class CreateSaArchComponent implements OnInit {
       this.appStateService.setNewConsoleItem(
         ` New Reference Architecture loaded: ${this.parentRADesign.name}`
       );
+      this.saveDesignLocalStore();
       this.router.navigate([], {
         relativeTo: this.route,
         queryParams: {},
       });
-      this.saveDesignLocalStore();
     });
   }
 
@@ -444,8 +449,15 @@ export class CreateSaArchComponent implements OnInit {
     return saDesign;
   }
 
-  saveDesignLocalStore() {
-    return this.appStateService.saveCurrentDesign(this.getSADesign());
+  saveDesignLocalStore(reportUpdate = true) {
+    let currentDesign = this.getSADesign();
+    if (reportUpdate) {
+      this.validationService.$getNewValidations.next({
+        raDesign: this.parentRADesign,
+        saDesign: currentDesign,
+      });
+    }
+    return this.appStateService.saveCurrentDesign(currentDesign);
   }
 
   onExceSuggestion(sugg: ISuggestionItem) {
@@ -456,6 +468,7 @@ export class CreateSaArchComponent implements OnInit {
       if (block1 && block2) {
         this.onConnectTwoElements({ block1, block2 });
       }
+      this.saveDesignLocalStore();
       return;
     }
     if (sugg.action == 'CREATE') {
@@ -467,6 +480,7 @@ export class CreateSaArchComponent implements OnInit {
         fill: '#fff9c4',
         icon: 'code',
       });
+      this.saveDesignLocalStore();
       return;
     }
     if (sugg.action == 'DISCONNECT') {
@@ -474,6 +488,7 @@ export class CreateSaArchComponent implements OnInit {
       this.onDeleteConnections(
         this.allConnections.filter((cc) => cc.id == connId)
       );
+      this.saveDesignLocalStore();
       return;
     }
   }
