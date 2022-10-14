@@ -24,6 +24,7 @@ import {
 import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-save-ra-design.component';
 import { ISuggestionItem } from '../suggestions/suggestions.component';
 import { ValidationService } from 'src/services/validation.service';
+import domtoimage from 'dom-to-image';
 @Component({
   selector: 'app-create-sa-arch',
   templateUrl: './create-sa-arch.component.html',
@@ -505,7 +506,58 @@ export class CreateSaArchComponent implements OnInit {
     }
   }
 
-  onPrint(e: any) {}
+  async onPrint(e: any) {
+    try {
+      this.printState = true;
+      let iconNodes = this.rootDesign?.querySelectorAll(
+        '.box-icon,.mat-icon-button'
+      );
+      let textBoxNodes = this.rootDesign?.querySelectorAll('.shape-box-label');
+      let designNameIcon: any = this.rootDesign?.querySelector('#name-design');
+      iconNodes?.forEach((e: any) => (e.style.display = 'none'));
+      textBoxNodes?.forEach((e: any) => {
+        e.style.textTransform = 'uppercase';
+        e.style.fontWeight = '600';
+      });
+      designNameIcon.style.display = 'block';
+      let dataUrl = await domtoimage.toPng(this.rootDesign as any);
+      var link = document.createElement('a');
+      link.download = `${this.designName
+        .split(' ')
+        .join('_')}_${new Date().toDateString()}`;
+      link.href = dataUrl;
+      link.click();
+      iconNodes?.forEach((e: any) => (e.style.display = 'block'));
+      designNameIcon.style.display = 'none';
+      textBoxNodes?.forEach((e: any) => {
+        e.style.textTransform = 'none';
+        e.style.fontWeight = '500';
+      });
+      this.printState = false;
+    } catch (e) {
+      console.log('Error printing', e);
+    }
+  }
+
+  onShowDescription() {
+    const dialogRef = this.dialog.open(DialogSaveRADesign, {
+      maxHeight: '90vh',
+      maxWidth: '100%',
+      width: '20cm',
+      data: {
+        element: this.saveDesignLocalStore(),
+        raDesign: this.parentRADesign,
+        saDesign: this.getSADesign(),
+        isSADesign: true,
+        onlyDescription: true,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result: RADesign) => {
+      if (!result) return;
+      this.description = result.description as string;
+      this.saveDesignLocalStore();
+    });
+  }
 
   onSaveDesign() {
     const dialogRef = this.dialog.open(DialogSaveRADesign, {

@@ -1,6 +1,6 @@
-import {  Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AppStateService } from 'src/services/app-state.service';
 import { Box, Line } from 'src/library/element';
 import { delay_ms } from 'src/utils';
@@ -14,7 +14,7 @@ import {
   RADesign,
 } from '../../models/app.model';
 import { DialogSaveRADesign } from 'src/dialogs/dialog-save-ra-design/dialog-save-ra-design.component';
-
+import domtoimage from 'dom-to-image';
 @Component({
   selector: 'app-create-ra-arch',
   templateUrl: './create-ra-arch.component.html',
@@ -34,6 +34,8 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
   posY = 10;
   currentRADesign: any;
   rootDesign: HTMLElement | null = null;
+  fullScreenMode = false;
+  printState = false;
 
   constructor(
     public dialog: MatDialog,
@@ -352,6 +354,67 @@ export class CreateRaArchComponent implements OnInit, OnDestroy {
         e
       );
     }
+  }
+
+  async onOpenFullScreen() {
+    let pageGrid = document.querySelector('.page-grid');
+    if (!pageGrid) return;
+    if (this.fullScreenMode) {
+      this.fullScreenMode = false;
+      window.document.exitFullscreen();
+    } else {
+      await pageGrid?.requestFullscreen();
+      this.fullScreenMode = true;
+    }
+  }
+  async onPrint(e: any) {
+    try {
+      // this.printState = true;
+      let iconNodes = this.rootDesign?.querySelectorAll(
+        '.box-icon,.mat-icon-button'
+      );
+      let textBoxNodes = this.rootDesign?.querySelectorAll('.shape-box-label');
+      let designNameIcon: any = this.rootDesign?.querySelector('#name-design');
+      iconNodes?.forEach((e: any) => (e.style.display = 'none'));
+      textBoxNodes?.forEach((e: any) => {
+        e.style.textTransform = 'uppercase';
+        e.style.fontWeight = '600';
+      });
+      designNameIcon.style.display = 'block';
+      let dataUrl = await domtoimage.toPng(this.rootDesign as any);
+      var link = document.createElement('a');
+      link.download = `${this.designName
+        .split(' ')
+        .join('_')}_${new Date().toDateString()}`;
+      link.href = dataUrl;
+      link.click();
+      iconNodes?.forEach((e: any) => (e.style.display = 'block'));
+      designNameIcon.style.display = 'none';
+      textBoxNodes?.forEach((e: any) => {
+        e.style.textTransform = 'none';
+        e.style.fontWeight = '500';
+      });
+      // this.printState = false;
+    } catch (e) {
+      console.log('Error printing', e);
+    }
+  }
+
+  onShowDescription() {
+    const dialogRef = this.dialog.open(DialogSaveRADesign, {
+      maxHeight: '90vh',
+      maxWidth: '100%',
+      width: '20cm',
+      data: {
+        element: this.saveDesignLocalStore(),
+        onlyDescription: true,
+      },
+    });
+    dialogRef.afterClosed().subscribe((result: RADesign) => {
+      if (!result) return;
+      this.description = result.description as string;
+      this.saveDesignLocalStore();
+    });
   }
 
   onSaveDesign() {

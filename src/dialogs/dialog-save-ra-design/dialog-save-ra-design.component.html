@@ -14,60 +14,61 @@
     </ul>
   </ng-container>
   <ng-container *ngIf="!this.suggestionErros.length">
-    <mat-form-field appearance="fill">
-      <mat-label>Id</mat-label>
-      <input
-        matInput
-        placeholder="Id"
-        [value]="this.selectedElement.id"
-        readonly
-        disabled
-      />
-    </mat-form-field>
-
-    <div
-      fxLayout="row wrap"
-      fxLayoutAlign="space-between start"
-      fxLayoutGap="gappx"
-    >
-      <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="fill">
-        <mat-label># Elements</mat-label>
+    <ng-container *ngIf="!onlyDescription">
+      <mat-form-field appearance="fill">
+        <mat-label>Id</mat-label>
         <input
           matInput
           placeholder="Id"
+          [value]="this.selectedElement.id"
           readonly
           disabled
-          [value]="this.selectedElement.elements.length"
         />
       </mat-form-field>
-      <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="fill">
-        <mat-label># Connectors</mat-label>
-        <input
-          readonly
-          disabled
-          matInput
-          placeholder="Id"
-          [value]="this.selectedElement.connections.length"
-        />
-      </mat-form-field>
-    </div>
 
-    <mat-form-field appearance="fill">
-      <mat-label>Description </mat-label>
-      <textarea
-        rows="5"
-        style="font-style: italic"
-        type="text"
-        matInput
-        placeholder="Describe your design"
-        [formControl]="$any(this.formData).get('description')"
-      ></textarea>
-      <mat-error
-        *ngIf="$any(this.formData).get('description').hasError('required')"
-        >Invalid</mat-error
+      <div
+        fxLayout="row wrap"
+        fxLayoutAlign="space-between start"
+        fxLayoutGap="gappx"
       >
-    </mat-form-field>
+        <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="fill">
+          <mat-label># Elements</mat-label>
+          <input
+            matInput
+            placeholder="Id"
+            readonly
+            disabled
+            [value]="this.selectedElement.elements.length"
+          />
+        </mat-form-field>
+        <mat-form-field fxFlex="48" fxFlex.lt-md="100" appearance="fill">
+          <mat-label># Connectors</mat-label>
+          <input
+            readonly
+            disabled
+            matInput
+            placeholder="Id"
+            [value]="this.selectedElement.connections.length"
+          />
+        </mat-form-field>
+      </div>
+    </ng-container>
   </ng-container>
+  <mat-form-field appearance="fill">
+    <mat-label>Description </mat-label>
+    <textarea
+      rows="10"
+      style="font-style: italic"
+      type="text"
+      matInput
+      placeholder="Describe your design"
+      [formControl]="$any(this.formData).get('description')"
+    ></textarea>
+    <mat-error
+      *ngIf="$any(this.formData).get('description').hasError('required')"
+      >Invalid</mat-error
+    >
+  </mat-form-field>
 </mat-dialog-content>
 
 <mat-dialog-actions fxLayoutAlign="end center">

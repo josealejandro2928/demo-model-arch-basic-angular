@@ -18,6 +18,7 @@ export class DialogSaveRADesign implements OnInit {
   raDesign: RADesign | undefined;
   saDesign: SADesign | undefined;
   suggestionErros: ISuggestionItem[] = [];
+  onlyDescription = false;
   constructor(
     @Inject(MAT_DIALOG_DATA) public dataDialog: any,
     public dialogRef: MatDialogRef<DialogSaveRADesign>,
@@ -28,6 +29,7 @@ export class DialogSaveRADesign implements OnInit {
     this.raDesign = this.dataDialog?.raDesign;
     this.saDesign = this.dataDialog?.saDesign;
     this.isSADesign = this.dataDialog?.isSADesign;
+    this.onlyDescription = this.dataDialog?.onlyDescription;
   }
 
   ngOnInit(): void {

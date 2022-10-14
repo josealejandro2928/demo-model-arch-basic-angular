@@ -128,6 +128,35 @@ body {
   }
 }
 
+#open-full-screen-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+
+#print-btn {
+  position: absolute;
+  top: 8px;
+  right: 48px;
+}
+
+#show-description-btn {
+  position: absolute;
+  top: 8px;
+  right: 90px;
+}
+
+#name-design {
+  position: absolute;
+  z-index: 10;
+  top: 20px;
+  left: 16px;
+  font-size: 32px;
+  font-weight: 500;
+  font-style: italic;
+  display: none;
+}
+
 //////////////////////ANIMATIONS//////////////////////////////
 @keyframes fade-in-up {
   0% {
