@@ -52,7 +52,7 @@ export class SuggestionsComponent implements OnInit, OnDestroy {
         this.raDesign = raDesign;
         this.saDesign = saDesign;
         this.getInitialSuggestionRejected();
-        console.log(this.raDesign, this.saDesign);
+        // console.log(this.raDesign, this.saDesign);
         this.allSuggestion = this.validationService.makeSuggestions(
           this.raDesign,
           this.saDesign

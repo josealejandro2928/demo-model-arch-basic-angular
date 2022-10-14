@@ -17,6 +17,7 @@ export class ListDesignComponent implements OnInit {
     try {
       this.allRA = await firstValueFrom(this.appService.getAllRA());
       this.allSA = await firstValueFrom(this.appService.getAllSA());
+      // console.log("🚀 ~ file: list-design.component.ts ~ line 19 ~ ListDesignComponent ~ ngOnInit ~ this.allRA", this.allRA)
     } catch (e) {
       console.error(e);
     }

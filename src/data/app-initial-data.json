@@ -1,0 +1,2056 @@
+{
+  "listRA": [
+    {
+      "name": "Basic Web Application",
+      "description": "This is a simple description of a monolithic Web Application. \n- A simple Single Page Application as a Client\n- A server Application\n- An auth server\n- A relational DB\n- A logging system to store all the activities in the app\n- A external Service for handling the payment",
+      "id": "7a37f13",
+      "connections": [
+        {
+          "id": "7ecfbc4",
+          "name": "connections",
+          "uxElementState": {
+            "id": "7ecfbc4",
+            "width": 278,
+            "x": 506,
+            "y": 356.5,
+            "height": 13.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "7fea148",
+            "block2Id": "7e288e0",
+            "points": [
+              { "x": 221, "y": 282.5 },
+              { "x": 487, "y": 284 }
+            ],
+            "meta": null
+          },
+          "block1Id": "7fea148",
+          "block2Id": "7e288e0",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "7a96297",
+          "name": "connections",
+          "uxElementState": {
+            "id": "7a96297",
+            "width": 608,
+            "x": 772,
+            "y": 349,
+            "height": 21,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "7e288e0",
+            "block2Id": "7df7c98",
+            "points": [
+              { "x": 487, "y": 284 },
+              { "x": 1083, "y": 275 }
+            ],
+            "meta": null
+          },
+          "block1Id": "7e288e0",
+          "block2Id": "7df7c98",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "8519489",
+          "name": "connections",
+          "uxElementState": {
+            "id": "8519489",
+            "width": 335.5,
+            "x": 772,
+            "y": 358,
+            "height": 126,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "7e288e0",
+            "block2Id": "7d40338",
+            "points": [
+              { "x": 487, "y": 284 },
+              { "x": 810.5, "y": 398 }
+            ],
+            "meta": null
+          },
+          "block1Id": "7e288e0",
+          "block2Id": "7d40338",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "83e202f",
+          "name": "connections",
+          "uxElementState": {
+            "id": "83e202f",
+            "width": 284.5,
+            "x": 1095.5,
+            "y": 349,
+            "height": 135,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "7d40338",
+            "block2Id": "7df7c98",
+            "points": [
+              { "x": 810.5, "y": 398 },
+              { "x": 1083, "y": 275 }
+            ],
+            "meta": null
+          },
+          "block1Id": "7d40338",
+          "block2Id": "7df7c98",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "1a8c2d6",
+          "name": "connections",
+          "uxElementState": {
+            "id": "1a8c2d6",
+            "width": 14,
+            "x": 770,
+            "y": 358,
+            "height": 301.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "7e288e0",
+            "block2Id": "1569a4c",
+            "points": [
+              { "x": 487, "y": 284 },
+              { "x": 485, "y": 573.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "7e288e0",
+          "block2Id": "1569a4c",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "b2f6e6c",
+          "name": "connections",
+          "uxElementState": {
+            "id": "b2f6e6c",
+            "width": 337,
+            "x": 772,
+            "y": 234,
+            "height": 136,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "bb26ee5",
+            "block2Id": "7e288e0",
+            "points": [
+              { "x": 812, "y": 160 },
+              { "x": 487, "y": 284 }
+            ],
+            "meta": null
+          },
+          "block1Id": "bb26ee5",
+          "block2Id": "7e288e0",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "ba1ac1f",
+          "name": "connections",
+          "uxElementState": {
+            "id": "ba1ac1f",
+            "width": 283,
+            "x": 1097,
+            "y": 234,
+            "height": 127,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "bb26ee5",
+            "block2Id": "7df7c98",
+            "points": [
+              { "x": 812, "y": 160 },
+              { "x": 1083, "y": 275 }
+            ],
+            "meta": null
+          },
+          "block1Id": "bb26ee5",
+          "block2Id": "7df7c98",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "ccb0f58",
+          "name": "connections",
+          "uxElementState": {
+            "id": "ccb0f58",
+            "width": 190,
+            "x": 770,
+            "y": 646,
+            "height": 13.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "1569a4c",
+            "block2Id": "ccc0c53",
+            "points": [
+              { "x": 485, "y": 573.5 },
+              { "x": 663, "y": 572 }
+            ],
+            "meta": null
+          },
+          "block1Id": "1569a4c",
+          "block2Id": "ccc0c53",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        }
+      ],
+      "elements": [
+        {
+          "id": "7fea148",
+          "name": "Client App",
+          "type": "CLIENT_APP",
+          "uxElementState": {
+            "id": "7fea148",
+            "width": 95,
+            "x": 465,
+            "y": 294.5,
+            "height": 136,
+            "options": {
+              "name": "Client App",
+              "stroke": "#000",
+              "color": "#6d67c1",
+              "fontColor": "#f5f5f5",
+              "renderEL": "computer",
+              "id": "7fea148"
+            },
+            "connections": ["7ecfbc4"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["7ecfbc4"]
+        },
+        {
+          "id": "7df7c98",
+          "name": "Database",
+          "type": "DATABASE",
+          "uxElementState": {
+            "id": "7df7c98",
+            "width": 150,
+            "x": 1299,
+            "y": 274,
+            "height": 162,
+            "options": {
+              "name": "Database",
+              "stroke": "#000",
+              "color": "#46453f",
+              "fontColor": "#ffffff",
+              "renderEL": "database",
+              "id": "7df7c98"
+            },
+            "connections": ["7a96297", "83e202f", "ba1ac1f"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["7a96297", "83e202f", "ba1ac1f"]
+        },
+        {
+          "id": "7e288e0",
+          "name": "Server App",
+          "type": "BAKEND_SERVER",
+          "uxElementState": {
+            "id": "7e288e0",
+            "width": 134,
+            "x": 711,
+            "y": 299,
+            "height": 131,
+            "options": {
+              "name": "Server App",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "storage",
+              "id": "7e288e0"
+            },
+            "connections": [
+              "7ecfbc4",
+              "7a96297",
+              "8519489",
+              "1a8c2d6",
+              "b2f6e6c"
+            ],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["7ecfbc4", "7a96297", "8519489", "1a8c2d6", "b2f6e6c"]
+        },
+        {
+          "id": "7d40338",
+          "name": "Auth",
+          "type": "AUTH",
+          "uxElementState": {
+            "id": "7d40338",
+            "width": 135,
+            "x": 1034.5,
+            "y": 418,
+            "height": 121,
+            "options": {
+              "name": "Auth",
+              "stroke": "#000",
+              "color": "#169c57",
+              "fontColor": "#f7f7f7",
+              "renderEL": "verified_user",
+              "id": "7d40338"
+            },
+            "connections": ["8519489", "83e202f"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["8519489", "83e202f"]
+        },
+        {
+          "id": "1569a4c",
+          "name": "Loging System",
+          "type": "LOGING_SYSTEM",
+          "uxElementState": {
+            "id": "1569a4c",
+            "width": 133,
+            "x": 710,
+            "y": 582.5,
+            "height": 143,
+            "options": {
+              "name": "Loging System",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#1c1c1c",
+              "renderEL": "info",
+              "id": "1569a4c"
+            },
+            "connections": ["1a8c2d6", "ccb0f58"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["1a8c2d6", "ccb0f58"]
+        },
+        {
+          "id": "bb26ee5",
+          "name": "Payment Service",
+          "type": "PAYMENT_SERVICE",
+          "uxElementState": {
+            "id": "bb26ee5",
+            "width": 142,
+            "x": 1032,
+            "y": 184,
+            "height": 112,
+            "options": {
+              "name": "Payment Service",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#241f31",
+              "renderEL": "payments",
+              "id": "bb26ee5"
+            },
+            "connections": ["b2f6e6c", "ba1ac1f"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["b2f6e6c", "ba1ac1f"]
+        },
+        {
+          "id": "ccc0c53",
+          "name": "Logging_DB",
+          "type": "LOGGING_DB",
+          "uxElementState": {
+            "id": "ccc0c53",
+            "width": 133,
+            "x": 888,
+            "y": 580,
+            "height": 145,
+            "options": {
+              "name": "Logging_DB",
+              "stroke": "#000",
+              "color": "#46453f",
+              "fontColor": "#ffffff",
+              "renderEL": "database",
+              "id": "ccc0c53"
+            },
+            "connections": ["ccb0f58"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["ccb0f58"]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "name": "Security System ",
+      "description": "Simple security system for motion detection. The system is based on arduino microcontroller.\nIt has a motion sensor and a camera sensor to detect motion and proximity. Once the signal is detected, the microcontroller activates the speaker actuator for a period of 3 minutes. After that it send a notification to the users using a notification service via http Api Call.",
+      "id": "9b33236",
+      "connections": [
+        {
+          "id": "9c39aa5",
+          "name": "connections",
+          "uxElementState": {
+            "id": "9c39aa5",
+            "width": 291.5,
+            "x": 480.5,
+            "y": 173.5,
+            "height": 203.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "9a915ea",
+            "block2Id": "9eea08b",
+            "points": [
+              { "x": 195.5, "y": 99.5 },
+              { "x": 475, "y": 291 }
+            ],
+            "meta": null
+          },
+          "block1Id": "9a915ea",
+          "block2Id": "9eea08b",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "9f123a4",
+          "name": "connections",
+          "uxElementState": {
+            "id": "9f123a4",
+            "width": 291.5,
+            "x": 480.5,
+            "y": 365,
+            "height": 262.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "a0ab47e",
+            "block2Id": "9eea08b",
+            "points": [
+              { "x": 195.5, "y": 541.5 },
+              { "x": 475, "y": 291 }
+            ],
+            "meta": null
+          },
+          "block1Id": "a0ab47e",
+          "block2Id": "9eea08b",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "99e9708",
+          "name": "connections",
+          "uxElementState": {
+            "id": "99e9708",
+            "width": 293.5,
+            "x": 478.5,
+            "y": 362.5,
+            "height": 14.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "9eea08b",
+            "block2Id": "9fb8b43",
+            "points": [
+              { "x": 475, "y": 291 },
+              { "x": 193.5, "y": 288.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "9eea08b",
+          "block2Id": "9fb8b43",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "9b8c4b7",
+          "name": "connections",
+          "uxElementState": {
+            "id": "9b8c4b7",
+            "width": 14,
+            "x": 478.5,
+            "y": 173.5,
+            "height": 201,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "9a915ea",
+            "block2Id": "9fb8b43",
+            "points": [
+              { "x": 195.5, "y": 99.5 },
+              { "x": 193.5, "y": 288.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "9a915ea",
+          "block2Id": "9fb8b43",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "9ec538f",
+          "name": "connections",
+          "uxElementState": {
+            "id": "9ec538f",
+            "width": 14,
+            "x": 478.5,
+            "y": 362.5,
+            "height": 265,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "a0ab47e",
+            "block2Id": "9fb8b43",
+            "points": [
+              { "x": 195.5, "y": 541.5 },
+              { "x": 193.5, "y": 288.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "a0ab47e",
+          "block2Id": "9fb8b43",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "9b3b4ed",
+          "name": "connections",
+          "uxElementState": {
+            "id": "9b3b4ed",
+            "width": 259,
+            "x": 760,
+            "y": 224,
+            "height": 153,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "9eea08b",
+            "block2Id": "9ba455d",
+            "points": [
+              { "x": 475, "y": 291 },
+              { "x": 722, "y": 150 }
+            ],
+            "meta": null
+          },
+          "block1Id": "9eea08b",
+          "block2Id": "9ba455d",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "a167a9b",
+          "name": "connections",
+          "uxElementState": {
+            "id": "a167a9b",
+            "width": 184,
+            "x": 1007,
+            "y": 223,
+            "height": 13,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "9ba455d",
+            "block2Id": "9ce8a53",
+            "points": [
+              { "x": 722, "y": 150 },
+              { "x": 894, "y": 149 }
+            ],
+            "meta": null
+          },
+          "block1Id": "9ba455d",
+          "block2Id": "9ce8a53",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "9a10610",
+          "name": "connections",
+          "uxElementState": {
+            "id": "9a10610",
+            "width": 258,
+            "x": 760,
+            "y": 365,
+            "height": 234,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "9eea08b",
+            "block2Id": "a2186db",
+            "points": [
+              { "x": 475, "y": 291 },
+              { "x": 721, "y": 513 }
+            ],
+            "meta": null
+          },
+          "block1Id": "9eea08b",
+          "block2Id": "a2186db",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        }
+      ],
+      "elements": [
+        {
+          "id": "9eea08b",
+          "name": "Controller",
+          "type": "CONTROLLER",
+          "uxElementState": {
+            "id": "9eea08b",
+            "width": 98,
+            "x": 717,
+            "y": 302,
+            "height": 139,
+            "options": {
+              "name": "Controller",
+              "stroke": "#000",
+              "color": "#3a3936",
+              "fontColor": "#ffffff",
+              "renderEL": "developer_board",
+              "id": "9eea08b"
+            },
+            "connections": [
+              "9c39aa5",
+              "9f123a4",
+              "99e9708",
+              "9b3b4ed",
+              "9a10610"
+            ],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["9c39aa5", "9f123a4", "99e9708", "9b3b4ed", "9a10610"]
+        },
+        {
+          "id": "9fb8b43",
+          "name": "Bus Memory",
+          "type": "BUS_MEMORY",
+          "uxElementState": {
+            "id": "9fb8b43",
+            "width": 186,
+            "x": 391.5,
+            "y": 305.5,
+            "height": 127,
+            "options": {
+              "name": "Bus Memory",
+              "stroke": "#000",
+              "color": "#2f2f2d",
+              "fontColor": "#ffffff",
+              "renderEL": "memory",
+              "id": "9fb8b43"
+            },
+            "connections": ["99e9708", "9b8c4b7", "9ec538f"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["99e9708", "9b8c4b7", "9ec538f"]
+        },
+        {
+          "id": "9a915ea",
+          "name": "Motion Sensor",
+          "type": "MOTION_SENSOR",
+          "uxElementState": {
+            "id": "9a915ea",
+            "width": 130,
+            "x": 421.5,
+            "y": 127.5,
+            "height": 105,
+            "options": {
+              "name": "Motion Sensor",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "sensors",
+              "id": "9a915ea"
+            },
+            "connections": ["9c39aa5", "9b8c4b7"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["9c39aa5", "9b8c4b7"]
+        },
+        {
+          "id": "a0ab47e",
+          "name": "Camera sensor",
+          "type": "CAMERA_SENSOR",
+          "uxElementState": {
+            "id": "a0ab47e",
+            "width": 129,
+            "x": 422.5,
+            "y": 561.5,
+            "height": 120,
+            "options": {
+              "name": "Camera sensor",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "sensors",
+              "id": "a0ab47e"
+            },
+            "connections": ["9f123a4", "9ec538f"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["9f123a4", "9ec538f"]
+        },
+        {
+          "id": "9ba455d",
+          "name": "Alarm Actuator",
+          "type": "ALARM_ACTUATOR",
+          "uxElementState": {
+            "id": "9ba455d",
+            "width": 124,
+            "x": 951,
+            "y": 173,
+            "height": 114,
+            "options": {
+              "name": "Alarm Actuator",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "volume_up",
+              "id": "9ba455d"
+            },
+            "connections": ["9b3b4ed", "a167a9b"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["9b3b4ed", "a167a9b"]
+        },
+        {
+          "id": "9ce8a53",
+          "name": "Timer",
+          "type": "TIMER",
+          "uxElementState": {
+            "id": "9ce8a53",
+            "width": 100,
+            "x": 1135,
+            "y": 164,
+            "height": 130,
+            "options": {
+              "name": "Timer",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "timer",
+              "id": "9ce8a53"
+            },
+            "connections": ["a167a9b"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["a167a9b"]
+        },
+        {
+          "id": "a2186db",
+          "name": "Notification System",
+          "type": "NOTIFICATION_SYSTEM",
+          "uxElementState": {
+            "id": "a2186db",
+            "width": 165,
+            "x": 930,
+            "y": 534,
+            "height": 118,
+            "options": {
+              "name": "Notification System",
+              "stroke": "#000",
+              "color": "#108e3a",
+              "fontColor": "#000",
+              "renderEL": "notifications",
+              "id": "a2186db"
+            },
+            "connections": ["9a10610"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["9a10610"]
+        }
+      ],
+      "valid": false
+    },
+    {
+      "name": "Basic To-Do App",
+      "description": "Basic Todo App for MVC architectures",
+      "id": "9e9b487",
+      "connections": [
+        {
+          "id": "9b57edf",
+          "name": "connections",
+          "uxElementState": {
+            "id": "9b57edf",
+            "width": 186,
+            "x": 638.5,
+            "y": 250.5,
+            "height": 257.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "9ea006a",
+            "block2Id": "a380717",
+            "points": [
+              { "x": 347.5, "y": 428 },
+              { "x": 533.5, "y": 170.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "9ea006a",
+          "block2Id": "a380717",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "9cbb660",
+          "name": "connections",
+          "uxElementState": {
+            "id": "9cbb660",
+            "width": 8,
+            "x": 824.5,
+            "y": 250.5,
+            "height": 261,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "a380717",
+            "block2Id": "a0ba0d2",
+            "points": [
+              { "x": 533.5, "y": 170.5 },
+              { "x": 541.5, "y": 431.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "a380717",
+          "block2Id": "a0ba0d2",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "a12eb98",
+          "name": "connections",
+          "uxElementState": {
+            "id": "a12eb98",
+            "width": 208.5,
+            "x": 824.5,
+            "y": 249,
+            "height": 1.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "a380717",
+            "block2Id": "a3ba0dc",
+            "points": [
+              { "x": 533.5, "y": 170.5 },
+              { "x": 742, "y": 169 }
+            ],
+            "meta": null
+          },
+          "block1Id": "a380717",
+          "block2Id": "a3ba0dc",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "a31abe4",
+          "name": "connections",
+          "uxElementState": {
+            "id": "a31abe4",
+            "width": 207.5,
+            "x": 617,
+            "y": 249,
+            "height": 1.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "9b3e26b",
+            "block2Id": "a380717",
+            "points": [
+              { "x": 326, "y": 169 },
+              { "x": 533.5, "y": 170.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "9b3e26b",
+          "block2Id": "a380717",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "a235bdd",
+          "name": "connections",
+          "uxElementState": {
+            "id": "a235bdd",
+            "width": 212.5,
+            "x": 824.5,
+            "y": 250.5,
+            "height": 259,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "a380717",
+            "block2Id": "9e37ce5",
+            "points": [
+              { "x": 533.5, "y": 170.5 },
+              { "x": 746, "y": 429.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "a380717",
+          "block2Id": "9e37ce5",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        }
+      ],
+      "elements": [
+        {
+          "id": "a380717",
+          "name": "List Component",
+          "type": "LIST_COMPONENT",
+          "uxElementState": {
+            "id": "a380717",
+            "width": 133,
+            "x": 758.5,
+            "y": 184.5,
+            "height": 132,
+            "options": {
+              "name": "List Component",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "code",
+              "id": "a380717"
+            },
+            "connections": [
+              "9b57edf",
+              "9cbb660",
+              "a12eb98",
+              "a31abe4",
+              "a235bdd"
+            ],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["9b57edf", "9cbb660", "a12eb98", "a31abe4", "a235bdd"]
+        },
+        {
+          "id": "9b3e26b",
+          "name": "Create Component",
+          "type": "CREATE_COMPONENT",
+          "uxElementState": {
+            "id": "9b3e26b",
+            "width": 142,
+            "x": 546,
+            "y": 190,
+            "height": 119,
+            "options": {
+              "name": "Create Component",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "code",
+              "id": "9b3e26b"
+            },
+            "connections": ["a31abe4"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["a31abe4"]
+        },
+        {
+          "id": "a3ba0dc",
+          "name": "Edit Component",
+          "type": "EDIT_COMPONENT",
+          "uxElementState": {
+            "id": "a3ba0dc",
+            "width": 144,
+            "x": 961,
+            "y": 189,
+            "height": 121,
+            "options": {
+              "name": "Edit Component",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "code",
+              "id": "a3ba0dc"
+            },
+            "connections": ["a12eb98"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["a12eb98"]
+        },
+        {
+          "id": "9ea006a",
+          "name": "Complete Action",
+          "type": "COMPLETE_ACTION",
+          "uxElementState": {
+            "id": "9ea006a",
+            "width": 127,
+            "x": 575.5,
+            "y": 449,
+            "height": 119,
+            "options": {
+              "name": "Complete Action",
+              "stroke": "#000",
+              "color": "#1c924f",
+              "fontColor": "#ffffff",
+              "renderEL": "done",
+              "id": "9ea006a"
+            },
+            "connections": ["9b57edf"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["9b57edf"]
+        },
+        {
+          "id": "a0ba0d2",
+          "name": "Delete Action",
+          "type": "DELETE_ACTION",
+          "uxElementState": {
+            "id": "a0ba0d2",
+            "width": 140,
+            "x": 762.5,
+            "y": 451.5,
+            "height": 120,
+            "options": {
+              "name": "Delete Action",
+              "stroke": "#000",
+              "color": "#d62505",
+              "fontColor": "#ffffff",
+              "renderEL": "done",
+              "id": "a0ba0d2"
+            },
+            "connections": ["9cbb660"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["9cbb660"]
+        },
+        {
+          "id": "9e37ce5",
+          "name": "Export Data",
+          "type": "EXPORT_DATA",
+          "uxElementState": {
+            "id": "9e37ce5",
+            "width": 129,
+            "x": 973,
+            "y": 445.5,
+            "height": 128,
+            "options": {
+              "name": "Export Data",
+              "stroke": "#000",
+              "color": "#2050df",
+              "fontColor": "#ffffff",
+              "renderEL": "download_for_offline",
+              "id": "9e37ce5"
+            },
+            "connections": ["a235bdd"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["a235bdd"]
+        }
+      ],
+      "valid": false
+    }
+  ],
+  "listSA": [
+    {
+      "name": "Microservice Web App",
+      "description": "Basic Microservice web Application with payment, logging and authentication, product and stock isolated services. This architecture implement the Reference Architecture \" Basic Web App\".\n\nComponents:\n    -Web App: Fronted Application\n    -Client App: Mobile Application\n    - ApiGateway: Its the main Actor for forwarding the incoming request to the subsequent service based on the url.\n    -Logging-Service:",
+      "id": "3abd453",
+      "connections": [
+        {
+          "id": "ce9a76b",
+          "name": "connections",
+          "uxElementState": {
+            "id": "ce9a76b",
+            "width": 349,
+            "x": 498,
+            "y": 252,
+            "height": 162.5,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "3784c54",
+            "block2Id": "3648815",
+            "points": [
+              { "x": 213, "y": 178 },
+              { "x": 550, "y": 328.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "3784c54",
+          "block2Id": "3648815",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "d41ff6d",
+          "name": "connections",
+          "uxElementState": {
+            "id": "d41ff6d",
+            "width": 356.5,
+            "x": 490.5,
+            "y": 402.5,
+            "height": 87.5,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "3975c83",
+            "block2Id": "3648815",
+            "points": [
+              { "x": 205.5, "y": 404 },
+              { "x": 550, "y": 328.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "3975c83",
+          "block2Id": "3648815",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "d36b1c8",
+          "name": "connections",
+          "uxElementState": {
+            "id": "d36b1c8",
+            "width": 238.5,
+            "x": 1220,
+            "y": 211,
+            "height": 109.5,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "b82dae6",
+            "block2Id": "36b3da0",
+            "points": [
+              { "x": 935, "y": 137 },
+              { "x": 1161.5, "y": 234.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "b82dae6",
+          "block2Id": "36b3da0",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "d3b04e1",
+          "name": "connections",
+          "uxElementState": {
+            "id": "d3b04e1",
+            "width": 15,
+            "x": 832,
+            "y": 402.5,
+            "height": 249,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "3648815",
+            "block2Id": "3d4f65e",
+            "points": [
+              { "x": 550, "y": 328.5 },
+              { "x": 547, "y": 565.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "3648815",
+          "block2Id": "3d4f65e",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "d1113af",
+          "name": "connections",
+          "uxElementState": {
+            "id": "d1113af",
+            "width": 12.5,
+            "x": 835,
+            "y": 157.5,
+            "height": 257,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "3648815",
+            "block2Id": "38d04b6",
+            "points": [
+              { "x": 550, "y": 328.5 },
+              { "x": 550.5, "y": 83.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "3648815",
+          "block2Id": "38d04b6",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "cc2d466",
+          "name": "connections",
+          "uxElementState": {
+            "id": "cc2d466",
+            "width": 395.5,
+            "x": 835,
+            "y": 402.5,
+            "height": 220,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "3f14627",
+            "block2Id": "3648815",
+            "points": [
+              { "x": 933.5, "y": 536.5 },
+              { "x": 550, "y": 328.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "3f14627",
+          "block2Id": "3648815",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "d2a9873",
+          "name": "connections",
+          "uxElementState": {
+            "id": "d2a9873",
+            "width": 243.5,
+            "x": 1218.5,
+            "y": 610.5,
+            "height": 13.5,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "3f14627",
+            "block2Id": "b8982d9",
+            "points": [
+              { "x": 933.5, "y": 536.5 },
+              { "x": 1165, "y": 538 }
+            ],
+            "meta": null
+          },
+          "block1Id": "3f14627",
+          "block2Id": "b8982d9",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "d19b270",
+          "name": "connections",
+          "uxElementState": {
+            "id": "d19b270",
+            "width": 233.5,
+            "x": 1225,
+            "y": 308.5,
+            "height": 106.5,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "b669f32",
+            "block2Id": "36b3da0",
+            "points": [
+              { "x": 940, "y": 329 },
+              { "x": 1161.5, "y": 234.5 }
+            ],
+            "meta": null
+          },
+          "block1Id": "b669f32",
+          "block2Id": "36b3da0",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "cd7be8e",
+          "name": "connections",
+          "uxElementState": {
+            "id": "cd7be8e",
+            "width": 397,
+            "x": 835,
+            "y": 211,
+            "height": 203.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "3648815",
+            "block2Id": "b82dae6",
+            "points": [
+              { "x": 550, "y": 328.5 },
+              { "x": 935, "y": 137 }
+            ],
+            "meta": null
+          },
+          "block1Id": "3648815",
+          "block2Id": "b82dae6",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "d23cebb",
+          "name": "connections",
+          "uxElementState": {
+            "id": "d23cebb",
+            "width": 402,
+            "x": 835,
+            "y": 402.5,
+            "height": 12.5,
+            "options": { "color": "#222222", "name": "connections" },
+            "block1Id": "3648815",
+            "block2Id": "b669f32",
+            "points": [
+              { "x": 550, "y": 328.5 },
+              { "x": 940, "y": 329 }
+            ],
+            "meta": null
+          },
+          "block1Id": "3648815",
+          "block2Id": "b669f32",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "cdd21d0",
+          "name": "connections",
+          "uxElementState": {
+            "id": "cdd21d0",
+            "width": 186,
+            "x": 832,
+            "y": 639.5,
+            "height": 14.5,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "3d4f65e",
+            "block2Id": "38f2d4c",
+            "points": [
+              { "x": 547, "y": 565.5 },
+              { "x": 721, "y": 568 }
+            ],
+            "meta": null
+          },
+          "block1Id": "3d4f65e",
+          "block2Id": "38f2d4c",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        },
+        {
+          "id": "64471a8",
+          "name": "connections",
+          "uxElementState": {
+            "id": "64471a8",
+            "width": 210.5,
+            "x": 835.5,
+            "y": 157.5,
+            "height": 12.5,
+            "options": { "color": "#000", "name": "connections" },
+            "block1Id": "38d04b6",
+            "block2Id": "cf50dde",
+            "points": [
+              { "x": 550.5, "y": 83.5 },
+              { "x": 749, "y": 84 }
+            ],
+            "meta": null
+          },
+          "block1Id": "38d04b6",
+          "block2Id": "cf50dde",
+          "type": "connection",
+          "isRa": true,
+          "valid": true
+        }
+      ],
+      "elements": [
+        {
+          "id": "3784c54",
+          "name": "Web App",
+          "type": "CLIENT_APP",
+          "uxElementState": {
+            "id": "3784c54",
+            "width": 148,
+            "x": 430,
+            "y": 198,
+            "height": 120,
+            "options": {
+              "name": "Web App",
+              "stroke": "#000",
+              "color": "#0d158c",
+              "fontColor": "#ffffff",
+              "renderEL": "web",
+              "id": "3784c54"
+            },
+            "connections": ["ce9a76b"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["ce9a76b"]
+        },
+        {
+          "id": "36b3da0",
+          "name": "Business_DB",
+          "type": "DATABASE",
+          "uxElementState": {
+            "id": "36b3da0",
+            "width": 115,
+            "x": 1395.5,
+            "y": 257.5,
+            "height": 115,
+            "options": {
+              "name": "Business_DB",
+              "stroke": "#000",
+              "color": "#46453f",
+              "fontColor": "#ffffff",
+              "renderEL": "database",
+              "id": "36b3da0"
+            },
+            "connections": ["d36b1c8", "d19b270"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["d36b1c8", "d19b270"]
+        },
+        {
+          "id": "3648815",
+          "name": "Api Gateway",
+          "type": "BAKEND_SERVER",
+          "uxElementState": {
+            "id": "3648815",
+            "width": 163,
+            "x": 760,
+            "y": 356.5,
+            "height": 105,
+            "options": {
+              "name": "Api Gateway",
+              "stroke": "#000",
+              "color": "#59d972",
+              "fontColor": "#000",
+              "renderEL": "account_tree",
+              "id": "3648815"
+            },
+            "connections": [
+              "ce9a76b",
+              "d41ff6d",
+              "d3b04e1",
+              "d1113af",
+              "cc2d466",
+              "cd7be8e",
+              "d23cebb"
+            ],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": [
+            "ce9a76b",
+            "d41ff6d",
+            "d3b04e1",
+            "d1113af",
+            "cc2d466",
+            "cd7be8e",
+            "d23cebb"
+          ]
+        },
+        {
+          "id": "38d04b6",
+          "name": "Logging_Service",
+          "type": "LOGING_SYSTEM",
+          "uxElementState": {
+            "id": "38d04b6",
+            "width": 140,
+            "x": 771.5,
+            "y": 106.5,
+            "height": 114,
+            "options": {
+              "name": "Logging_Service",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "info",
+              "id": "38d04b6"
+            },
+            "connections": ["d1113af", "64471a8"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["d1113af", "64471a8"]
+        },
+        {
+          "id": "3975c83",
+          "name": "Mobile App",
+          "type": "CLIENT_APP",
+          "uxElementState": {
+            "id": "3975c83",
+            "width": 96,
+            "x": 448.5,
+            "y": 421,
+            "height": 127,
+            "options": {
+              "name": "Mobile App",
+              "stroke": "#000",
+              "color": "#1d5387",
+              "fontColor": "#fcfcfc",
+              "renderEL": "phone_iphone",
+              "id": "3975c83"
+            },
+            "connections": ["d41ff6d"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["d41ff6d"]
+        },
+        {
+          "id": "38f2d4c",
+          "name": "User_DB",
+          "type": "DATABASE",
+          "uxElementState": {
+            "id": "38f2d4c",
+            "width": 98,
+            "x": 963,
+            "y": 589,
+            "height": 119,
+            "options": {
+              "name": "User_DB",
+              "stroke": "#000",
+              "color": "#46453f",
+              "fontColor": "#f8f2f2",
+              "renderEL": "database",
+              "id": "38f2d4c"
+            },
+            "connections": ["cdd21d0"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["cdd21d0"]
+        },
+        {
+          "id": "3f14627",
+          "name": "Pyment_Service",
+          "type": "PAYMENT_SERVICE",
+          "uxElementState": {
+            "id": "3f14627",
+            "width": 134,
+            "x": 1157.5,
+            "y": 553.5,
+            "height": 126,
+            "options": {
+              "name": "Pyment_Service",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "payments",
+              "id": "3f14627"
+            },
+            "connections": ["cc2d466", "d2a9873"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["cc2d466", "d2a9873"]
+        },
+        {
+          "id": "3d4f65e",
+          "name": "Auth_Service",
+          "type": "AUTH",
+          "uxElementState": {
+            "id": "3d4f65e",
+            "width": 111,
+            "x": 783,
+            "y": 583.5,
+            "height": 124,
+            "options": {
+              "name": "Auth_Service",
+              "stroke": "#000",
+              "color": "#299930",
+              "fontColor": "#000",
+              "renderEL": "verified_user",
+              "id": "3d4f65e"
+            },
+            "connections": ["d3b04e1", "cdd21d0"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["d3b04e1", "cdd21d0"]
+        },
+        {
+          "id": "b82dae6",
+          "name": "Products_Service",
+          "type": "BAKEND_SERVER",
+          "uxElementState": {
+            "id": "b82dae6",
+            "width": 133,
+            "x": 1160,
+            "y": 159,
+            "height": 117,
+            "options": {
+              "name": "Products_Service",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000000",
+              "renderEL": "call_to_action",
+              "id": "b82dae6"
+            },
+            "connections": ["d36b1c8", "cd7be8e"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["d36b1c8", "cd7be8e"]
+        },
+        {
+          "id": "b669f32",
+          "name": "Stock_Service",
+          "type": "BAKEND_SERVER",
+          "uxElementState": {
+            "id": "b669f32",
+            "width": 126,
+            "x": 1168,
+            "y": 350,
+            "height": 119,
+            "options": {
+              "name": "Stock_Service",
+              "stroke": "#000",
+              "color": "#fff9c4",
+              "fontColor": "#000",
+              "renderEL": "call_to_action",
+              "id": "b669f32"
+            },
+            "connections": ["d19b270", "d23cebb"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["d19b270", "d23cebb"]
+        },
+        {
+          "id": "b8982d9",
+          "name": "Payment_DB",
+          "type": "DATABASE",
+          "uxElementState": {
+            "id": "b8982d9",
+            "width": 119,
+            "x": 1397,
+            "y": 557,
+            "height": 122,
+            "options": {
+              "name": "Payment_DB",
+              "stroke": "#000",
+              "color": "#46453f",
+              "fontColor": "#ffffff",
+              "renderEL": "database",
+              "id": "b8982d9"
+            },
+            "connections": ["d2a9873"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["d2a9873"]
+        },
+        {
+          "id": "cf50dde",
+          "name": "LOGGING_DB",
+          "type": "LOGGING_DB",
+          "uxElementState": {
+            "id": "cf50dde",
+            "width": 110,
+            "x": 985,
+            "y": 105,
+            "height": 119,
+            "options": {
+              "name": "LOGGING_DB",
+              "stroke": "#000",
+              "color": "#46453f",
+              "fontColor": "#ffffff",
+              "renderEL": "database",
+              "id": "cf50dde"
+            },
+            "connections": ["64471a8"],
+            "meta": null
+          },
+          "isRa": true,
+          "connections": ["64471a8"]
+        }
+      ],
+      "valid": false,
+      "parentRADesign": {
+        "name": "Basic Web Application",
+        "description": "This is a simple description of a monolithic Web Application. \n- A simple Single Page Application as a Client\n- A server Application\n- An auth server\n- A relational DB\n- A logging system to store all the activities in the app\n- A external Service for handling the payment",
+        "id": "7a37f13",
+        "connections": [
+          {
+            "id": "7ecfbc4",
+            "name": "connections",
+            "uxElementState": {
+              "id": "7ecfbc4",
+              "width": 278,
+              "x": 506,
+              "y": 356.5,
+              "height": 13.5,
+              "options": { "color": "#222222", "name": "connections" },
+              "block1Id": "7fea148",
+              "block2Id": "7e288e0",
+              "points": [
+                { "x": 221, "y": 282.5 },
+                { "x": 487, "y": 284 }
+              ],
+              "meta": null
+            },
+            "block1Id": "7fea148",
+            "block2Id": "7e288e0",
+            "type": "connection",
+            "isRa": true,
+            "valid": true
+          },
+          {
+            "id": "7a96297",
+            "name": "connections",
+            "uxElementState": {
+              "id": "7a96297",
+              "width": 608,
+              "x": 772,
+              "y": 349,
+              "height": 21,
+              "options": { "color": "#222222", "name": "connections" },
+              "block1Id": "7e288e0",
+              "block2Id": "7df7c98",
+              "points": [
+                { "x": 487, "y": 284 },
+                { "x": 1083, "y": 275 }
+              ],
+              "meta": null
+            },
+            "block1Id": "7e288e0",
+            "block2Id": "7df7c98",
+            "type": "connection",
+            "isRa": true,
+            "valid": true
+          },
+          {
+            "id": "8519489",
+            "name": "connections",
+            "uxElementState": {
+              "id": "8519489",
+              "width": 335.5,
+              "x": 772,
+              "y": 358,
+              "height": 126,
+              "options": { "color": "#222222", "name": "connections" },
+              "block1Id": "7e288e0",
+              "block2Id": "7d40338",
+              "points": [
+                { "x": 487, "y": 284 },
+                { "x": 810.5, "y": 398 }
+              ],
+              "meta": null
+            },
+            "block1Id": "7e288e0",
+            "block2Id": "7d40338",
+            "type": "connection",
+            "isRa": true,
+            "valid": true
+          },
+          {
+            "id": "83e202f",
+            "name": "connections",
+            "uxElementState": {
+              "id": "83e202f",
+              "width": 284.5,
+              "x": 1095.5,
+              "y": 349,
+              "height": 135,
+              "options": { "color": "#222222", "name": "connections" },
+              "block1Id": "7d40338",
+              "block2Id": "7df7c98",
+              "points": [
+                { "x": 810.5, "y": 398 },
+                { "x": 1083, "y": 275 }
+              ],
+              "meta": null
+            },
+            "block1Id": "7d40338",
+            "block2Id": "7df7c98",
+            "type": "connection",
+            "isRa": true,
+            "valid": true
+          },
+          {
+            "id": "1a8c2d6",
+            "name": "connections",
+            "uxElementState": {
+              "id": "1a8c2d6",
+              "width": 14,
+              "x": 770,
+              "y": 358,
+              "height": 301.5,
+              "options": { "color": "#222222", "name": "connections" },
+              "block1Id": "7e288e0",
+              "block2Id": "1569a4c",
+              "points": [
+                { "x": 487, "y": 284 },
+                { "x": 485, "y": 573.5 }
+              ],
+              "meta": null
+            },
+            "block1Id": "7e288e0",
+            "block2Id": "1569a4c",
+            "type": "connection",
+            "isRa": true,
+            "valid": true
+          },
+          {
+            "id": "b2f6e6c",
+            "name": "connections",
+            "uxElementState": {
+              "id": "b2f6e6c",
+              "width": 337,
+              "x": 772,
+              "y": 234,
+              "height": 136,
+              "options": { "color": "#222222", "name": "connections" },
+              "block1Id": "bb26ee5",
+              "block2Id": "7e288e0",
+              "points": [
+                { "x": 812, "y": 160 },
+                { "x": 487, "y": 284 }
+              ],
+              "meta": null
+            },
+            "block1Id": "bb26ee5",
+            "block2Id": "7e288e0",
+            "type": "connection",
+            "isRa": true,
+            "valid": true
+          },
+          {
+            "id": "ba1ac1f",
+            "name": "connections",
+            "uxElementState": {
+              "id": "ba1ac1f",
+              "width": 283,
+              "x": 1097,
+              "y": 234,
+              "height": 127,
+              "options": { "color": "#222222", "name": "connections" },
+              "block1Id": "bb26ee5",
+              "block2Id": "7df7c98",
+              "points": [
+                { "x": 812, "y": 160 },
+                { "x": 1083, "y": 275 }
+              ],
+              "meta": null
+            },
+            "block1Id": "bb26ee5",
+            "block2Id": "7df7c98",
+            "type": "connection",
+            "isRa": true,
+            "valid": true
+          },
+          {
+            "id": "ccb0f58",
+            "name": "connections",
+            "uxElementState": {
+              "id": "ccb0f58",
+              "width": 190,
+              "x": 770,
+              "y": 646,
+              "height": 13.5,
+              "options": { "color": "#222222", "name": "connections" },
+              "block1Id": "1569a4c",
+              "block2Id": "ccc0c53",
+              "points": [
+                { "x": 485, "y": 573.5 },
+                { "x": 663, "y": 572 }
+              ],
+              "meta": null
+            },
+            "block1Id": "1569a4c",
+            "block2Id": "ccc0c53",
+            "type": "connection",
+            "isRa": true,
+            "valid": true
+          }
+        ],
+        "elements": [
+          {
+            "id": "7fea148",
+            "name": "Client App",
+            "type": "CLIENT_APP",
+            "uxElementState": {
+              "id": "7fea148",
+              "width": 95,
+              "x": 465,
+              "y": 294.5,
+              "height": 136,
+              "options": {
+                "name": "Client App",
+                "stroke": "#000",
+                "color": "#6d67c1",
+                "fontColor": "#f5f5f5",
+                "renderEL": "computer",
+                "id": "7fea148"
+              },
+              "connections": ["7ecfbc4"],
+              "meta": null
+            },
+            "isRa": true,
+            "connections": ["7ecfbc4"]
+          },
+          {
+            "id": "7df7c98",
+            "name": "Database",
+            "type": "DATABASE",
+            "uxElementState": {
+              "id": "7df7c98",
+              "width": 150,
+              "x": 1299,
+              "y": 274,
+              "height": 162,
+              "options": {
+                "name": "Database",
+                "stroke": "#000",
+                "color": "#46453f",
+                "fontColor": "#ffffff",
+                "renderEL": "database",
+                "id": "7df7c98"
+              },
+              "connections": ["7a96297", "83e202f", "ba1ac1f"],
+              "meta": null
+            },
+            "isRa": true,
+            "connections": ["7a96297", "83e202f", "ba1ac1f"]
+          },
+          {
+            "id": "7e288e0",
+            "name": "Server App",
+            "type": "BAKEND_SERVER",
+            "uxElementState": {
+              "id": "7e288e0",
+              "width": 134,
+              "x": 711,
+              "y": 299,
+              "height": 131,
+              "options": {
+                "name": "Server App",
+                "stroke": "#000",
+                "color": "#fff9c4",
+                "fontColor": "#000",
+                "renderEL": "storage",
+                "id": "7e288e0"
+              },
+              "connections": [
+                "7ecfbc4",
+                "7a96297",
+                "8519489",
+                "1a8c2d6",
+                "b2f6e6c"
+              ],
+              "meta": null
+            },
+            "isRa": true,
+            "connections": [
+              "7ecfbc4",
+              "7a96297",
+              "8519489",
+              "1a8c2d6",
+              "b2f6e6c"
+            ]
+          },
+          {
+            "id": "7d40338",
+            "name": "Auth",
+            "type": "AUTH",
+            "uxElementState": {
+              "id": "7d40338",
+              "width": 135,
+              "x": 1034.5,
+              "y": 418,
+              "height": 121,
+              "options": {
+                "name": "Auth",
+                "stroke": "#000",
+                "color": "#169c57",
+                "fontColor": "#f7f7f7",
+                "renderEL": "verified_user",
+                "id": "7d40338"
+              },
+              "connections": ["8519489", "83e202f"],
+              "meta": null
+            },
+            "isRa": true,
+            "connections": ["8519489", "83e202f"]
+          },
+          {
+            "id": "1569a4c",
+            "name": "Loging System",
+            "type": "LOGING_SYSTEM",
+            "uxElementState": {
+              "id": "1569a4c",
+              "width": 133,
+              "x": 710,
+              "y": 582.5,
+              "height": 143,
+              "options": {
+                "name": "Loging System",
+                "stroke": "#000",
+                "color": "#fff9c4",
+                "fontColor": "#1c1c1c",
+                "renderEL": "info",
+                "id": "1569a4c"
+              },
+              "connections": ["1a8c2d6", "ccb0f58"],
+              "meta": null
+            },
+            "isRa": true,
+            "connections": ["1a8c2d6", "ccb0f58"]
+          },
+          {
+            "id": "bb26ee5",
+            "name": "Payment Service",
+            "type": "PAYMENT_SERVICE",
+            "uxElementState": {
+              "id": "bb26ee5",
+              "width": 142,
+              "x": 1032,
+              "y": 184,
+              "height": 112,
+              "options": {
+                "name": "Payment Service",
+                "stroke": "#000",
+                "color": "#fff9c4",
+                "fontColor": "#241f31",
+                "renderEL": "payments",
+                "id": "bb26ee5"
+              },
+              "connections": ["b2f6e6c", "ba1ac1f"],
+              "meta": null
+            },
+            "isRa": true,
+            "connections": ["b2f6e6c", "ba1ac1f"]
+          },
+          {
+            "id": "ccc0c53",
+            "name": "Logging_DB",
+            "type": "LOGGING_DB",
+            "uxElementState": {
+              "id": "ccc0c53",
+              "width": 133,
+              "x": 888,
+              "y": 580,
+              "height": 145,
+              "options": {
+                "name": "Logging_DB",
+                "stroke": "#000",
+                "color": "#46453f",
+                "fontColor": "#ffffff",
+                "renderEL": "database",
+                "id": "ccc0c53"
+              },
+              "connections": ["ccb0f58"],
+              "meta": null
+            },
+            "isRa": true,
+            "connections": ["ccb0f58"]
+          }
+        ],
+        "valid": false
+      }
+    }
+  ],
+  "3abd453": {
+    "suggestionRejected": [
+      "CONNECT-3784c54-b82dae6",
+      "CONNECT-3784c54-b669f32",
+      "CONNECT-3975c83-b82dae6",
+      "CONNECT-3975c83-b669f32",
+      "CONNECT-3648815-36b3da0",
+      "CONNECT-3648815-3db9602",
+      "CONNECT-3648815-38f2d4c",
+      "CONNECT-3648815-b8982d9",
+      "CONNECT-b82dae6-3db9602",
+      "CONNECT-b82dae6-38f2d4c",
+      "CONNECT-b82dae6-b8982d9",
+      "CONNECT-b669f32-36b3da0",
+      "CONNECT-b669f32-3db9602",
+      "CONNECT-b669f32-38f2d4c",
+      "CONNECT-b669f32-b8982d9",
+      "CONNECT-b82dae6-3d4f65e",
+      "CONNECT-b669f32-3d4f65e",
+      "CONNECT-3d4f65e-36b3da0",
+      "CONNECT-3d4f65e-3db9602",
+      "CONNECT-3d4f65e-b8982d9",
+      "CONNECT-b82dae6-38d04b6",
+      "CONNECT-b669f32-38d04b6",
+      "CONNECT-38d04b6-36b3da0",
+      "CONNECT-38d04b6-38f2d4c",
+      "CONNECT-38d04b6-b8982d9",
+      "CONNECT-3f14627-b82dae6",
+      "CONNECT-3f14627-36b3da0",
+      "CONNECT-3f14627-3db9602",
+      "CONNECT-3f14627-38f2d4c",
+      "CONNECT-3f14627-b669f32"
+    ]
+  }
+}
