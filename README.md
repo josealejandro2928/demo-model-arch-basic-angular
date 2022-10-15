@@ -1,5 +1,5 @@
 # Basic Reference Architecture Modeler
-This website allows users to create Reference Architecture in a vanilla way. Also, you can instantiate this RA with a Software Architecture that complains with the chosen RA. The system implements an engine validation that suggests to the users the action for reaching compliance.
+This app allows users to create Reference Architecture in a vanilla way. Also, you can instantiate this RA with a Software Architecture that complains with the chosen RA. The system implements an engine validation that suggests to the users the action for reaching compliance.
 
 ## Definitions and concepts
 
