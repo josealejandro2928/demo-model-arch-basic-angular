@@ -7,20 +7,38 @@
   ></app-toolbar>
   <div class="page-grid">
     <nav class="nav">
-      <app-modeler
-        [_selectionElements]="this.selectionElements"
-        [_selectionConnections]="this.selectionConnections"
-        (addNewElement)="onAddNewElement()"
-        (editElement)="onEditElement()"
-        (deleteElements)="onDeleteElements()"
-        (connectTwoElements)="onConnectTwoElements($event)"
-        (deleteConnections)="onDeleteConnections($event)"
-        (deleteDesign)="onDeleteDesign()"
-        (saveDesign)="onSaveDesign()"
-        [_connections]="this.allConnections"
-        [_elements]="this.allElements"
-        color="accent"
-      ></app-modeler>
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon style="margin-right: 4px">settings</mat-icon>
+            General
+          </ng-template>
+          <app-modeler
+            [_selectionElements]="this.selectionElements"
+            [_selectionConnections]="this.selectionConnections"
+            (addNewElement)="onAddNewElement()"
+            (editElement)="onEditElement()"
+            (deleteElements)="onDeleteElements()"
+            (connectTwoElements)="onConnectTwoElements($event)"
+            (deleteConnections)="onDeleteConnections($event)"
+            (deleteDesign)="onDeleteDesign()"
+            (saveDesign)="onSaveDesign()"
+            [_connections]="this.allConnections"
+            [_elements]="this.allElements"
+            color="accent"
+          ></app-modeler>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon style="margin-right: 4px">build</mat-icon>
+            Component
+          </ng-template>
+          <app-setting-element
+            ($componentChanged)="onComponentChanged($event)"
+            [_component]="getSelectedComponent()"
+          ></app-setting-element>
+        </mat-tab>
+      </mat-tab-group>
     </nav>
     <section class="content">
       <div #rootDesign id="box-cont" (click)="onClickRootDesign($event)">

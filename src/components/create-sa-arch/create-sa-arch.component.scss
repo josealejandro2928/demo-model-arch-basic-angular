@@ -4,3 +4,16 @@
   right: 32px;
 }
 
+:host::ng-deep {
+  .mat-tab-group {
+    height: 100%;
+  }
+  .mat-tab-body-wrapper {
+    height: 100%;
+  }
+  .mat-tab-label {
+    height: 40px;
+    padding: 0 14px;
+    min-width: 80px;
+  }
+}

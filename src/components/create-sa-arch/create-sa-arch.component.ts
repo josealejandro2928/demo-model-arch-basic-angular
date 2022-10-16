@@ -539,6 +539,21 @@ export class CreateSaArchComponent implements OnInit {
     }
   }
 
+  //////////////FUNCITON FOR THE SETTING SINGLE COMPONENT //////////////////////////
+  getSelectedComponent() {
+    if (this.selectionElements.size != 1) return undefined;
+    return [...this.selectionElements][0];
+  }
+
+  onComponentChanged(element: ElementComponent | undefined) {
+    if (!element) return;
+    let index = this.allElements.findIndex((e) => e.id == element.id);
+    if (index == -1) return;
+    this.allElements[index] = element;
+    this.saveDesignLocalStore();
+  }
+  //////////////////////////////////////////////////////////////////////////
+
   onShowDescription() {
     const dialogRef = this.dialog.open(DialogSaveRADesign, {
       maxHeight: '90vh',

@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
         this.appService.listSA = data['listSA'] as any;
         console.log('Uploaded the standar SA');
       }
+      if (localStorage.getItem('3abd453')) return;
       localStorage.setItem('3abd453', JSON.stringify(data['3abd453']));
     } catch (e) {
       console.log(
