@@ -128,8 +128,8 @@ class Box {
 
     this.labelEL.addEventListener('input', this.inputNameHandler);
     this.boxEl.addEventListener('contextmenu', this.contextMenuHandler);
-    this.boxEl.addEventListener('dblclick', this.doubleClickHandler);
-    this.labelEL.addEventListener('click', (e: any) => e.stopPropagation());
+    this.boxEl.addEventListener('click', this.doubleClickHandler);
+    // this.labelEL.addEventListener('click', (e: any) => e.stopPropagation());
     this.boxEl.addEventListener('click', (e: any) => e.stopPropagation());
   }
 
@@ -219,11 +219,7 @@ class Box {
     return this;
   }
 
-  setColor(
-    color: any = '#fff9c4',
-    stroke: any = '#000',
-    fontColor: any = '#000'
-  ) {
+  setColor(color: any, stroke?: any, fontColor?: any) {
     if (color) {
       this.options.color = color;
       this.boxEl.style.background = color;

@@ -5,7 +5,7 @@
         {{ item.user }}
       </span>
       :<span style="color: #0277bd">~</span>$
-      <span class="message">{{ item.message + "," }}</span>
+      <span class="message" [innerHTML]="item.message"></span>
       <span class="message">{{ item.date | date: "short" }}</span>
     </div>
     <div>

@@ -1,0 +1,107 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start stretch"
+  style="gap: 1rem; margin-top: 1rem"
+>
+  <mat-form-field appearance="fill">
+    <mat-label>name</mat-label>
+    <input
+      [disabled]="!this.component"
+      [value]="this.component?.name"
+      matInput
+      required
+      (change)="this.onChangeComponentName($any($event)?.target?.value)"
+      placeholder="Select the name"
+    />
+  </mat-form-field>
+  <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="gappx">
+    <mat-form-field fxFlex="48" appearance="fill">
+      <mat-label>Fill</mat-label>
+      <input
+        [disabled]="!this.component"
+        [value]="this.component?.uxElement?.options?.color"
+        matInput
+        required
+        type="color"
+        (change)="this.onChangeFillColor($any($event)?.target?.value)"
+      />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="48" appearance="fill">
+      <mat-label>Color</mat-label>
+      <input
+        [disabled]="!this.component"
+        [value]="this.component?.uxElement?.options?.fontColor"
+        matInput
+        required
+        type="color"
+        (change)="this.onChangeColor($any($event)?.target?.value)"
+      />
+    </mat-form-field>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="gappx">
+    <mat-form-field fxFlex="48" appearance="fill">
+      <mat-label>Width</mat-label>
+      <input
+        [disabled]="!this.component"
+        [value]="width"
+        matInput
+        required
+        type="number"
+        (change)="this.onChangeSize({ w: $any($event)?.target?.value })"
+      />
+    </mat-form-field>
+    <mat-form-field fxFlex="48" appearance="fill">
+      <mat-label>Height</mat-label>
+      <input
+        [disabled]="!this.component"
+        [value]="this.height"
+        matInput
+        required
+        type="number"
+        (change)="this.onChangeSize({ h: $any($event)?.target?.value })"
+      />
+    </mat-form-field>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="space-between start" fxLayoutGap="gappx">
+    <mat-form-field fxFlex="48" appearance="fill">
+      <mat-label>X</mat-label>
+      <input
+        [disabled]="!this.component"
+        [value]="this.x"
+        matInput
+        required
+        type="number"
+        (input)="this.onChangePos({ x: $any($event)?.target?.value })"
+      />
+    </mat-form-field>
+
+    <mat-form-field fxFlex="48" appearance="fill">
+      <mat-label>Y</mat-label>
+      <input
+        [disabled]="!this.component"
+        [value]="this.y"
+        matInput
+        required
+        type="number"
+        (input)="this.onChangePos({ y: $any($event)?.target?.value })"
+      />
+    </mat-form-field>
+  </div>
+  <mat-form-field class="form-icon" appearance="fill">
+    <mat-label>Icon</mat-label>
+    <mat-select [disabled]="!this.component" (selectionChange)="onIconChange($event.value)" [value]="this.icon">
+      <mat-option *ngFor="let icon of allIcons" [value]="icon.icon">
+        <span class="material-symbols-outlined"> {{ icon.icon }} </span>
+        <span>{{ icon.name }}</span>
+      </mat-option>
+    </mat-select>
+    <span
+      *ngIf="this.icon"
+      class="material-symbols-outlined icon-selected"
+    >
+      {{this.icon }}
+    </span>
+  </mat-form-field>
+</div>

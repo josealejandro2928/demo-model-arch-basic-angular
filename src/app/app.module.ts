@@ -27,10 +27,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { SelectRaDesign } from 'src/dialogs/select-ra-design/select-ra-design.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSelectModule } from '@angular/material/select';
 import { ListDesignComponent } from 'src/components/list-design/list-design.component';
 import { DesignItemComponent } from 'src/components/design-item/design-item.component';
 import { ConsoleComponent } from 'src/components/console/console.component';
 import { SuggestionsComponent } from 'src/components/suggestions/suggestions.component';
+import { SettingElementComponent } from 'src/components/setting-element/setting-element.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { SuggestionsComponent } from 'src/components/suggestions/suggestions.com
     DesignItemComponent,
     ConsoleComponent,
     SuggestionsComponent,
+    SettingElementComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,6 +71,7 @@ import { SuggestionsComponent } from 'src/components/suggestions/suggestions.com
     MatTooltipModule,
     MatChipsModule,
     MatTabsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],
