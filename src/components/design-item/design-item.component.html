@@ -1,10 +1,12 @@
-<div class="design-item">
+<div class="design-item" (click)="seeDetails($event, design)">
   <h3>
     {{ design?.name }}
     <ng-container *ngIf="$any(this.design).parentRADesign">
       <span>: implements </span>
       <a class="link">
-        <span style="font-weight: 500"> {{$any(this.design).parentRADesign?.name}} </span>
+        <span style="font-weight: 500">
+          {{ $any(this.design).parentRADesign?.name }}
+        </span>
       </a>
     </ng-container>
   </h3>
