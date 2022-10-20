@@ -333,7 +333,6 @@ export class CreateSaArchComponent implements OnInit {
     this.onDeleteConnections(this.allConnections);
     this.onDeleteElements();
     localStorage.setItem('current-sa-design', '');
-    // localStorage.setItem('current-sa-design', '');
     this.parentRADesign = null;
     this.id = this.appStateService.createUniqueId();
     this.designName = 'Example';
