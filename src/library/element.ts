@@ -128,7 +128,7 @@ class Box {
 
     this.labelEL.addEventListener('input', this.inputNameHandler);
     this.boxEl.addEventListener('contextmenu', this.contextMenuHandler);
-    this.boxEl.addEventListener('click', this.doubleClickHandler);
+    this.boxEl.addEventListener("dblclick", this.doubleClickHandler);
     // this.labelEL.addEventListener('click', (e: any) => e.stopPropagation());
     this.boxEl.addEventListener('click', (e: any) => e.stopPropagation());
   }
